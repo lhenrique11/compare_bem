@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "379925371793",
+    "project_id": "compare-bem",
+    "storage_bucket": "compare-bem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:379925371793:android:f8d3aac49111398f48d830",
+        "android_client_info": {
+          "package_name": "com.fragmento.comparebem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "379925371793-njrfm5f3jcnvmkhv51jee1ul843kpcup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8U8LAdZVxacVSrj-gBKsCPewrE7cqdIA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "379925371793-njrfm5f3jcnvmkhv51jee1ul843kpcup.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
