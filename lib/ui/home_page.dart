@@ -8,6 +8,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:comparebem/ui/lista_compras.dart';
 import 'package:comparebem/ui/compras_page.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -516,12 +517,184 @@ void initState() {
       ),
     );
 
+  // lista de opções 
+
+    Widget _opcoesList1 = Container(
+    margin: EdgeInsets.symmetric(vertical: 0.0),
+    
+    height: 250.0,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [
+
+          FadeIn(
+          duration: Duration(seconds: 2),
+          curve: Curves.easeIn,
+          child: Container(
+            margin: EdgeInsets.fromLTRB(15.0, 10.0, 5.0, 10.0),
+            decoration: BoxDecoration(
+            color:  Colors.grey[900],
+            borderRadius: BorderRadius.all(Radius.circular(40.0),),
+            ),
+            width: 310.0,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children:[
+                      
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0),
+                        child: Text('Ofertas de\nAtacado',
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.poppins(
+                          color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.w500
+                        ) ,
+                      ),
+                      ),
+
+                      
+
+                    ]
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:[
+
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(110.0, 20.0, 0.0, 0.0),
+                        child: TextButton.icon(
+                          onPressed: () => launchUrlString('https://www.confianca.com.br/'),
+                          icon: FaIcon(FeatherIcons.arrowRightCircle, color: Colors.white), 
+                          label: Text('Veja as ofertas',
+                           textAlign: TextAlign.center,
+                            style: GoogleFonts.poppins(
+                            color: Colors.white, fontSize: 15.0, fontWeight: FontWeight.w500
+                          ) ,
+                        ),  
+                        ) ,
+                      )
+                      
+                    ]
+                  )
+                  
+                ],
+              ),
+            )
+          ),
+
+         
+          FadeIn(
+          duration: Duration(seconds: 2),
+          curve: Curves.easeIn,
+          child:  Container(
+            margin: EdgeInsets.fromLTRB(15.0, 10.0, 5.0, 10.0),
+            decoration: BoxDecoration(
+            color: Colors.orange[700],
+            borderRadius: BorderRadius.all(Radius.circular(40.0),),
+            ),
+            width: 310.0,
+            child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children:[
+                      
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0),
+                        child: Text('Compare as\nOfertas',
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.poppins(
+                          color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.w500
+                        ) ,
+                      ),
+                      ),
+                    ]
+                  ),
+                  
+                 Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:[
+
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(110.0, 20.0, 0.0, 0.0),
+                        child: TextButton.icon(
+                          onPressed: () => launchUrlString('https://www.confianca.com.br/'),
+                          icon: FaIcon(FeatherIcons.arrowRightCircle, color: Colors.white), 
+                          label: Text('Veja as ofertas',
+                           textAlign: TextAlign.center,
+                            style: GoogleFonts.poppins(
+                            color: Colors.white, fontSize: 15.0, fontWeight: FontWeight.w500
+                          ) ,
+                        ),  
+                        ) ,
+                      )
+                      
+                    ]
+                  )
+                ],
+              ),
+            )
+          ), 
+          ),
+
+         
+          FadeIn(
+          duration: Duration(seconds: 2),
+          curve: Curves.easeIn,
+          child:  Container(
+            margin: EdgeInsets.fromLTRB(15.0, 10.0, 5.0, 10.0),
+            decoration: BoxDecoration(
+            color: Colors.grey[700],
+            borderRadius: BorderRadius.all(Radius.circular(40.0),),
+            ),
+            width: 310.0,
+            child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:[
+                      TextButton.icon(
+                      onPressed: () => launchUrlString('https://www.paodeacucar.com/'),
+                      icon: FaIcon(FontAwesomeIcons.arrowCircleRight, color: Colors.orange[700]), 
+                      label: Text('Acesse o site',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                          color: Colors.white, fontSize: 15.0, fontWeight: FontWeight.w500
+                        ) ,
+                      ),  
+                      )
+                    ]
+                  )
+                ],
+              ),
+            )
+          ), 
+          ),
+
+                
+        ],
+      ),
+    );
+
 
 
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 20.0),
+        padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 20.0),
         scrollDirection: Axis.vertical,
         child: Column(  
         mainAxisSize: MainAxisSize.max,
@@ -538,10 +711,10 @@ void initState() {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(padding: EdgeInsets.fromLTRB(20.0, 15.0, 0.0, 20.0)),
-                  Text('Olá!\nComo você está?',
+                  Text('Olá! Seja bem-vindo(a)!',
                     textAlign: TextAlign.left,
-                    style: GoogleFonts.montserrat(
-                      color: Colors.black, fontSize: 24.0, fontWeight: FontWeight.bold
+                    style: GoogleFonts.poppins(
+                      color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.w500
                     ) ,
                   ),
               ],
@@ -549,45 +722,30 @@ void initState() {
               ),
 
           Divider(color: Colors.transparent,),
-          Divider(color: Colors.transparent,),
 
           FadeIn(
             duration: Duration(seconds: 2),
             curve: Curves.easeIn,
-            child:  Row(
+            child:  Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-               Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(20.0),),
-                  boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.shade200,
-                    spreadRadius: 2,
-                    blurRadius: 8,
-                    offset: Offset(0,0))]), 
-                height: 40.0,
-                width: 150.0,  
-                alignment: Alignment.center,
-                child: DropdownButton<String>(
-                  onChanged: (String? newValue) {
-                     setState(() {
-                      var dropdownValue = newValue!;
-                    });
-                  },
-                  underline: Container() ,
-                  icon: FaIcon(FontAwesomeIcons.angleDown, size: 15.0,),
-                  iconEnabledColor: Colors.orange[700],
-                  iconDisabledColor: Colors.grey,
-                  dropdownColor: Colors.white,
-                    items: [DropdownMenuItem(
-                    child: Text('Bauru  ',
-                    textAlign: TextAlign.left,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 15.0, color: Colors.grey, fontWeight: FontWeight.bold),
-                    ),)],
+               Divider(color: Colors.transparent),             
+              FadeIn(
+              duration: Duration(seconds: 2),
+              curve: Curves.easeIn,
+              child: Center(
+                child: Container(
+                  child: ListView(
+                      padding: EdgeInsets.fromLTRB(00.0, 0.0, 0.0, 0.0),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      _opcoesList1,          
+                    ],
+                  ),
+                  
                 ),
+              ), 
               ),                            
             ],
           ), 

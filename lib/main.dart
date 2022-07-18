@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:comparebem/ui/home_page.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:path/path.dart' as Path;
@@ -96,24 +97,24 @@ class _MainPageState extends State<MainPage> {
         onTap: (i) => setState(() => _currentIndex = i), 
         items: [
            DotNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.home),
+              icon: FaIcon(FeatherIcons.home),
               selectedColor: Colors.orange[700],
             ),
 
             
             DotNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.shoppingCart),
+              icon: FaIcon(FeatherIcons.shoppingCart),
               selectedColor: Colors.orange[700],
             ),
 
             
             DotNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.list),
+              icon: FaIcon(FeatherIcons.list),
               selectedColor: Colors.orange[700],
             ),
 
             DotNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.solidBell),
+              icon: FaIcon(FeatherIcons.bell),
               selectedColor: Colors.orange[700],
             ),
         ]
