@@ -86,15 +86,10 @@ void initState() {
     Widget _ofertasList1 = Container(
       margin: EdgeInsets.symmetric(vertical: 10.0),
       decoration: BoxDecoration(
-        color: Colors.orange[700],
+        color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(40.0),),
-        boxShadow: [
-          BoxShadow(
-          color: Colors.grey.shade200,
-          spreadRadius: 2,
-          blurRadius: 8,
-          offset: Offset(0,0))]),
-      height: 400.0,
+      ),
+      height: 450.0,
       width: 500.0,
       child: ListView(
         scrollDirection: Axis.vertical,
@@ -106,11 +101,11 @@ void initState() {
             child:  Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Padding(padding: EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 18.0)),
-                  Text('Folhetos\nde ofertas',
+                Padding(padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 18.0)),
+                  Text('Principais ofertas',
                     textAlign: TextAlign.left,
-                    style: GoogleFonts.montserrat(
-                      color: Colors.white, fontSize: 15.0, fontWeight: FontWeight.bold
+                    style: GoogleFonts.poppins(
+                      color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.w500
                     ),
                   ),
               ],
@@ -124,25 +119,51 @@ void initState() {
           duration: Duration(seconds: 2),
           curve: Curves.easeIn,
           child:  Container(
-            margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 5.0),
+            margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
             decoration: BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.all(Radius.circular(20.0),),
             ),
-            width: 300.0,
+            width: 500.0,
             child: Container(
               child: Row(
                 children: [
 
-                  TextButton.icon(
-                    onPressed: () => launchUrlString('https://portal.clienteconfianca.com.br/tabloide-bauru/'), 
-                    icon: Image.asset('images/compras-1.png', height: 80.0, width: 80.0,), 
-                    label: Text('  Confira as ofertas',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 15.0, color: Colors.white, fontWeight: FontWeight.bold) ,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+
+                    Text('Confiança',
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.poppins(
+                      fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w500) 
                     ),
+
+                    
+                    
+                    ],
                   ),
+                  
+                  Padding(
+                    padding:EdgeInsets.fromLTRB(104.0, 0.0, 0.0, 0.0),
+                    child: Container(
+                      width: 120.0,
+                      height: 30.0,
+                      decoration: BoxDecoration(
+                        color: Colors.orange[700],
+                        borderRadius: BorderRadius.all(Radius.circular(20.0),),
+                      ),
+                      child:  TextButton.icon(
+                        onPressed: () {}, 
+                        icon: Icon(FeatherIcons.arrowRight, size: 12, color: Colors.white,),
+                        label: Text('Confira as ofertas',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            fontSize: 9.0, color: Colors.white, fontWeight: FontWeight.w500)), 
+                      ) ,
+                    ),
+                  )
+                  
                 ],
               ),
             )
@@ -154,7 +175,7 @@ void initState() {
           duration: Duration(seconds: 2),
           curve: Curves.easeIn,
           child:  Container(
-            margin: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
+            margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
             decoration: BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.all(Radius.circular(20.0),),
@@ -164,16 +185,39 @@ void initState() {
               child: Row(
                 children: [
 
-                  TextButton.icon(
-                    onPressed:  () => launchUrlString('https://www.barracaosm.com.br/ofertas'), 
-                    icon: Image.asset('images/compras-11.png', height: 80.0, width: 80.0,), 
-                    label: Text('  Confira as ofertas',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 15.0, color: Colors.white, fontWeight: FontWeight.bold) ,
-                    ),
-                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
 
+                    Text('Barracão',
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.poppins(
+                      fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w500) 
+                    ),
+
+                    
+                    ],
+                  ),
+                  
+                  Padding(
+                    padding:EdgeInsets.fromLTRB(115.0, 0.0, 0.0, 0.0),
+                    child: Container(
+                      width: 120.0,
+                      height: 30.0,
+                      decoration: BoxDecoration(
+                        color: Colors.orange[700],
+                        borderRadius: BorderRadius.all(Radius.circular(20.0),),
+                      ),
+                      child:  TextButton.icon(
+                        onPressed: () {}, 
+                        icon: Icon(FeatherIcons.arrowRight, size: 12, color: Colors.white,),
+                        label: Text('Confira as ofertas',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            fontSize: 9.0, color: Colors.white, fontWeight: FontWeight.w500)), 
+                      ) ,
+                    ),
+                  )
                 ],
               ),
             )
@@ -185,7 +229,7 @@ void initState() {
           duration: Duration(seconds: 2),
           curve: Curves.easeIn,  
           child:  Container(
-            margin: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
+            margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
             decoration: BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.all(Radius.circular(20.0),),
@@ -195,15 +239,38 @@ void initState() {
               child: Row(
                 children: [
 
-                  TextButton.icon(
-                    onPressed: () => launchUrlString('https://superbombauru.com.br/ofertas/'), 
-                    icon: Image.asset('images/compras-14.png', height: 80.0, width: 80.0,), 
-                    label: Text('  Confira as ofertas',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 15.0, color: Colors.white, fontWeight: FontWeight.bold) ,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+
+                    Text('Superbom',
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.poppins(
+                      fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w500) 
                     ),
+                    
+                    ],
                   ),
+                  
+                 Padding(
+                    padding:EdgeInsets.fromLTRB(105.0, 0.0, 0.0, 0.0),
+                    child: Container(
+                      width: 120.0,
+                      height: 30.0,
+                      decoration: BoxDecoration(
+                        color: Colors.orange[700],
+                        borderRadius: BorderRadius.all(Radius.circular(20.0),),
+                      ),
+                      child:  TextButton.icon(
+                        onPressed: () {}, 
+                        icon: Icon(FeatherIcons.arrowRight, size: 12, color: Colors.white,),
+                        label: Text('Confira as ofertas',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            fontSize: 9.0, color: Colors.white, fontWeight: FontWeight.w500)), 
+                      ) ,
+                    ),
+                  )
                 ],
               ),
             )
@@ -215,7 +282,7 @@ void initState() {
           duration: Duration(seconds: 2),
           curve: Curves.easeIn,
           child:  Container(
-            margin: EdgeInsets.fromLTRB(15.0, 5.0, 5.0, 5.0),
+            margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
             decoration: BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.all(Radius.circular(20.0),),
@@ -225,15 +292,37 @@ void initState() {
               child: Row(
                 children: [
 
-                  TextButton.icon(
-                    onPressed: () => launchUrlString('https://www.assai.com.br/ofertas/sao-paulo/assai-bauru'), 
-                    icon: Image.asset('images/compras-4.png', height: 80.0, width: 80.0,), 
-                    label: Text('  Confira as ofertas',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 15.0, color: Colors.white, fontWeight: FontWeight.bold) ,
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+
+                    Text('São Judas Tadeu',
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.poppins(
+                      fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w500) 
+                    ),                   
+                    ],
                   ),
+                  
+                 Padding(
+                    padding:EdgeInsets.fromLTRB(46.0, 0.0, 0.0, 0.0),
+                    child: Container(
+                      width: 120.0,
+                      height: 30.0,
+                      decoration: BoxDecoration(
+                        color: Colors.orange[700],
+                        borderRadius: BorderRadius.all(Radius.circular(20.0),),
+                      ),
+                      child:  TextButton.icon(
+                        onPressed: () {}, 
+                        icon: Icon(FeatherIcons.arrowRight, size: 12, color: Colors.white,),
+                        label: Text('Confira as ofertas',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            fontSize: 9.0, color: Colors.white, fontWeight: FontWeight.w500)), 
+                      ) ,
+                    ),
+                  )
                 ],
               ),
             )
@@ -245,7 +334,7 @@ void initState() {
           duration: Duration(seconds: 2),
           curve: Curves.easeIn,
           child:  Container(
-            margin: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
+            margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
             decoration: BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.all(Radius.circular(20.0),),
@@ -255,15 +344,38 @@ void initState() {
               child: Row(
                 children: [
 
-                  TextButton.icon(
-                    onPressed: () => launchUrlString('https://www.makro.com.br/makro.php?id=home#HomeOfertasBR'), 
-                    icon: Image.asset('images/compras-6.png', height: 80.0, width: 80.0,), 
-                    label: Text('  Confira as ofertas',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 15.0, color: Colors.white, fontWeight: FontWeight.bold) ,
+                 Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+
+                    Text('Pão de Açúcar',
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.poppins(
+                      fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w500) 
                     ),
+                    
+                    ],
                   ),
+                  
+                 Padding(
+                    padding:EdgeInsets.fromLTRB(68.0, 0.0, 0.0, 0.0),
+                    child: Container(
+                      width: 120.0,
+                      height: 30.0,
+                      decoration: BoxDecoration(
+                        color: Colors.orange[700],
+                        borderRadius: BorderRadius.all(Radius.circular(20.0),),
+                      ),
+                      child:  TextButton.icon(
+                        onPressed: () {}, 
+                        icon: Icon(FeatherIcons.arrowRight, size: 12, color: Colors.white,),
+                        label: Text('Confira as ofertas',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            fontSize: 9.0, color: Colors.white, fontWeight: FontWeight.w500)), 
+                      ) ,
+                    ),
+                  )
 
                 ],
               ),
@@ -276,7 +388,7 @@ void initState() {
           duration: Duration(seconds: 2),
           curve: Curves.easeIn,
           child:   Container(
-            margin: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
+            margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
             decoration: BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.all(Radius.circular(20.0),),
@@ -286,15 +398,37 @@ void initState() {
               child: Row(
                 children: [
 
-                  TextButton.icon(
-                    onPressed: () => launchUrlString('https://www.supersaojudas.com.br/folheto-digital/'), 
-                    icon: Image.asset('images/compras-13.png', height: 80.0, width: 80.0,), 
-                    label: Text('  Confira as ofertas',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 15.0, color: Colors.white, fontWeight: FontWeight.bold) ,
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+
+                    Text('Sams Club',
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.poppins(
+                      fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w500) 
+                    ),                    
+                    ],
                   ),
+                  
+                  Padding(
+                    padding:EdgeInsets.fromLTRB(103.0, 0.0, 0.0, 0.0),
+                    child: Container(
+                      width: 120.0,
+                      height: 30.0,
+                      decoration: BoxDecoration(
+                        color: Colors.orange[700],
+                        borderRadius: BorderRadius.all(Radius.circular(20.0),),
+                      ),
+                      child:  TextButton.icon(
+                        onPressed: () {}, 
+                        icon: Icon(FeatherIcons.arrowRight, size: 12, color: Colors.white,),
+                        label: Text('Confira as ofertas',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            fontSize: 9.0, color: Colors.white, fontWeight: FontWeight.w500)), 
+                      ) ,
+                    ),
+                  )
                 ],
               ),
             )
@@ -306,7 +440,7 @@ void initState() {
           duration: Duration(seconds: 2),
           curve: Curves.easeIn,
           child:  Container(
-            margin: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
+            margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
             decoration: BoxDecoration(
               color: Colors.transparent,
               borderRadius: BorderRadius.all(Radius.circular(20.0),),
@@ -317,201 +451,45 @@ void initState() {
                 children: [
 
 
-                  TextButton.icon(
-                    onPressed: () => launchUrlString('https://www.paodeacucar.com/especial/hs_ofertas?qt=12&p=1&gt=grid'), 
-                    icon: Image.asset('images/compras-3.png', height: 80.0, width: 80.0,), 
-                    label: Text('  Confira as ofertas',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 15.0, color: Colors.white, fontWeight: FontWeight.bold) ,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+
+                    Text('Panelão',
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.poppins(
+                      fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w500) 
                     ),
+
+                    ],
                   ),
+                  
+                  Padding(
+                    padding:EdgeInsets.fromLTRB(126.0, 0.0, 0.0, 0.0),
+                    child: Container(
+                      width: 120.0,
+                      height: 30.0,
+                      decoration: BoxDecoration(
+                        color: Colors.orange[700],
+                        borderRadius: BorderRadius.all(Radius.circular(20.0),),
+                      ),
+                      child:  TextButton.icon(
+                        onPressed: () {}, 
+                        icon: Icon(FeatherIcons.arrowRight, size: 12, color: Colors.white,),
+                        label: Text('Confira as ofertas',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            fontSize: 9.0, color: Colors.white, fontWeight: FontWeight.w500)), 
+                      ) ,
+                    ),
+                  )
 
                 ],
               ),
             )
           ), 
           ),
-         
 
-          FadeIn(
-          duration: Duration(seconds: 2),
-          curve: Curves.easeIn,
-          child:  Container(
-            margin: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.all(Radius.circular(20.0),),
-            ),
-            width: 300.0,
-            child: Container(
-              child: Row(
-                children: [
-
-                  TextButton.icon(
-                    onPressed: () => launchUrlString('https://www.samsclub.com.br/?gclid=Cj0KCQjwkIGKBhCxARIsAINMioJS6TzgQC-w-1r_gqZIsy8M_nP4aC0TpkhGDXrLmtkn368E8Uegw4UaAvbmEALw_wcB'), 
-                    icon: Image.asset('images/compras-7.png', height: 80.0, width: 80.0,), 
-                    label: Text('  Confira as ofertas',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 15.0, color: Colors.white, fontWeight: FontWeight.bold) ,
-                    ),
-                  ),
-
-                ],
-              ),
-            )
-          ),
-          ),
-         
-          FadeIn(
-          duration: Duration(seconds: 2),
-          curve: Curves.easeIn,
-          child:  Container(
-            margin: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.all(Radius.circular(20.0),),
-            ),
-            width: 300.0,
-            child: Container(
-              child: Row(
-                children: [
-
-                  TextButton.icon(
-                    onPressed: () => launchUrlString('https://www.spani.com.br/lojas/bauru/'), 
-                    icon: Image.asset('images/compras-5.png', height: 80.0, width: 80.0,), 
-                    label: Text('  Confira as ofertas',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 15.0, color: Colors.white, fontWeight: FontWeight.bold) ,
-                    ),
-                  ),
-
-                ],
-              ),
-            )
-          ), 
-          ),
-         
-          FadeIn(
-          duration: Duration(seconds: 2),
-          curve: Curves.easeIn,
-          child:  Container(
-            margin: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.all(Radius.circular(20.0),),
-            ),
-            width: 300.0,
-            child: Container(
-              child: Row(
-                children: [
-
-                  TextButton.icon(
-                    onPressed: () => launchUrlString('https://panelaosupermercados.com.br/?home=1'), 
-                    icon: Image.asset('images/compras-12.png', height: 80.0, width: 80.0,), 
-                    label: Text('  Confira as ofertas',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 15.0, color: Colors.white, fontWeight: FontWeight.bold) ,
-                    ),
-                  ),
-
-                ],
-              ),
-            )
-          ), 
-          ),
-         
-
-          FadeIn(
-          duration: Duration(seconds: 2),
-          curve: Curves.easeIn,
-          child: Container(
-            margin: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.all(Radius.circular(20.0),),
-            ),
-            width: 300.0,
-            child: Container(
-              child: Row(
-                children: [
-
-                  TextButton.icon(
-                    onPressed: () => launchUrlString('https://www.atacadao.com.br/catalogo/'), 
-                    icon: Image.asset('images/compras-10.png', height: 80.0, width: 80.0,), 
-                    label: Text('  Confira as ofertas',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 15.0, color: Colors.white, fontWeight: FontWeight.bold) ,
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ),           
-          ),
-          
-          FadeIn(
-          duration: Duration(seconds: 2),
-          curve: Curves.easeIn,
-          child:  Container(
-            margin: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.all(Radius.circular(20.0),),
-            ),
-            width: 300.0,
-            child: Container(
-              child: Row(
-                children: [
-
-                  TextButton.icon(
-                    onPressed: () => launchUrlString('https://www.tauste.com.br/ofertas'), 
-                    icon: Image.asset('images/compras-2.png', height: 80.0, width: 80.0,), 
-                    label: Text('  Confira as ofertas',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 15.0, color: Colors.white, fontWeight: FontWeight.bold) ,
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ),
-          ),
-         
-          FadeIn(
-          duration: Duration(seconds: 2),
-          curve: Curves.easeIn,
-          child: Container(
-            margin: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.all(Radius.circular(20.0),),
-            ),
-            width: 300.0,
-            child: Container(
-              child: Row(
-                children: [
-
-                  TextButton.icon(
-                    onPressed: () => launchUrlString('https://www.tendaatacado.com.br/institucional/nossas-ofertas'), 
-                    icon: Image.asset('images/compras-8.png', height: 80.0, width: 80.0,), 
-                    label: Text('  Confira as ofertas',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 15.0, color: Colors.white, fontWeight: FontWeight.bold) ,
-                    ),
-                  ),
-                
-                ],
-              ),
-            )
-          ),
-          ),
           
         ],
       ),
@@ -627,7 +605,7 @@ void initState() {
                       Padding(
                         padding: EdgeInsets.fromLTRB(110.0, 20.0, 0.0, 0.0),
                         child: TextButton.icon(
-                          onPressed: () => launchUrlString('https://www.confianca.com.br/'),
+                          onPressed: () {},
                           icon: FaIcon(FeatherIcons.arrowRightCircle, color: Colors.white), 
                           label: Text('Veja as ofertas',
                            textAlign: TextAlign.center,
@@ -663,13 +641,31 @@ void initState() {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
 
-                  Row(
+                   Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children:[
+                      
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0),
+                        child: Text('Alerta de\nOfertas',
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.poppins(
+                          color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.w500
+                        ) ,
+                      ),
+                      ),
+                    ]
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(110.0, 20.0, 0.0, 0.0),
+                    child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:[
                       TextButton.icon(
                       onPressed: () => launchUrlString('https://www.paodeacucar.com/'),
-                      icon: FaIcon(FontAwesomeIcons.arrowCircleRight, color: Colors.orange[700]), 
-                      label: Text('Acesse o site',
+                      icon: FaIcon(FeatherIcons.arrowRightCircle, color: Colors.white), 
+                      label: Text('Veja as ofertas',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(
                           color: Colors.white, fontSize: 15.0, fontWeight: FontWeight.w500
@@ -677,7 +673,184 @@ void initState() {
                       ),  
                       )
                     ]
+                    ),
                   )
+                  
+                ],
+              ),
+            )
+          ), 
+          ),
+
+                
+        ],
+      ),
+    );
+
+    // Clube de Vantagens lista
+
+    Widget _clubeList1 = Container(
+    margin: EdgeInsets.symmetric(vertical: 0.0),
+    
+    height: 150.0,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [
+
+          FadeIn(
+          duration: Duration(seconds: 2),
+          curve: Curves.easeIn,
+          child: Container(
+            margin: EdgeInsets.fromLTRB(15.0, 10.0, 5.0, 10.0),
+            decoration: BoxDecoration(
+            color:  Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(40.0),),
+            boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade200,
+              spreadRadius: 1,
+              blurRadius: 11,
+            offset: Offset(0,0))]
+            ),
+            width: 150.0,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
+                    child: TextButton.icon(
+                      onPressed: (){},
+                      icon: Image.asset('images/compras-1.png', 
+                        width: 100, height: 100,), 
+                      label: Text(""),     
+                    ) ,
+                  )
+                     
+                ],
+              ),
+            )
+          ),
+
+         
+          FadeIn(
+          duration: Duration(seconds: 2),
+          curve: Curves.easeIn,
+          child:  Container(
+            margin: EdgeInsets.fromLTRB(15.0, 10.0, 5.0, 10.0),
+            decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(40.0),),
+            boxShadow: [
+            BoxShadow(
+            color: Colors.grey.shade200,
+            spreadRadius: 1,
+            blurRadius: 11,
+            offset: Offset(0,0))]
+            ),
+            width: 150.0,
+            child: Container(
+              child:Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
+                    child: TextButton.icon(
+                      onPressed: (){},
+                      icon: Image.asset('images/compras-2.png', 
+                        width: 100, height: 100,),
+                        label: Text(""),    
+                    ) ,
+                  )   
+                    
+                ],
+              ),
+            )
+          ), 
+          ),
+
+         
+          FadeIn(
+          duration: Duration(seconds: 2),
+          curve: Curves.easeIn,
+          child:  Container(
+            margin: EdgeInsets.fromLTRB(15.0, 10.0, 5.0, 10.0),
+            decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(40.0),),
+            boxShadow: [
+            BoxShadow(
+            color: Colors.grey.shade200,
+            spreadRadius: 1,
+            blurRadius: 11,
+            offset: Offset(0,0))]
+            ),
+            width: 150.0,
+            child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:[
+
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
+                        child: TextButton.icon(
+                          onPressed: (){},
+                          icon: Image.asset('images/compras-6.png', 
+                          width: 100, height: 100,),
+                          label: Text(""), 
+                        ) ,
+                      )
+                      
+                    ]
+                  )
+
+                ],
+              ),
+            )
+          ), 
+          ),
+
+          FadeIn(
+          duration: Duration(seconds: 2),
+          curve: Curves.easeIn,
+          child:  Container(
+            margin: EdgeInsets.fromLTRB(15.0, 10.0, 5.0, 10.0),
+            decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(40.0),),
+            boxShadow: [
+            BoxShadow(
+            color: Colors.grey.shade200,
+            spreadRadius: 1,
+            blurRadius: 11,
+            offset: Offset(0,0))]
+            ),
+            width: 150.0,
+            child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+
+
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
+                    child: TextButton.icon(
+                      onPressed: (){},
+                      icon: Image.asset('images/compras-13.png', 
+                        width: 100, height: 100,),
+                        label: Text(""), 
+                    ) ,
+                  )
+
                 ],
               ),
             )
@@ -700,6 +873,7 @@ void initState() {
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
 
+          Divider(color: Colors.transparent,),
           Divider(color: Colors.transparent,),
           Divider(color: Colors.transparent,),
           Divider(color: Colors.transparent,),
@@ -741,6 +915,56 @@ void initState() {
                     scrollDirection: Axis.vertical,
                     children: [
                       _opcoesList1,          
+                    ],
+                  ),
+                  
+                ),
+              ), 
+              ),                            
+            ],
+          ), 
+          ),
+
+
+          Divider(color: Colors.transparent),
+
+
+          FadeIn(
+            duration: Duration(seconds: 2),
+            curve: Curves.easeIn,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(padding: EdgeInsets.fromLTRB(20.0, 15.0, 0.0, 20.0)),
+                  Text('Ofertas de Clubes',
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.poppins(
+                      color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.w500
+                    ) ,
+                  ),
+              ],
+              ), 
+              ),
+
+
+          FadeIn(
+            duration: Duration(seconds: 2),
+            curve: Curves.easeIn,
+            child:  Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+               Divider(color: Colors.transparent),             
+              FadeIn(
+              duration: Duration(seconds: 2),
+              curve: Curves.easeIn,
+              child: Center(
+                child: Container(
+                  child: ListView(
+                      padding: EdgeInsets.fromLTRB(00.0, 0.0, 0.0, 0.0),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      _clubeList1,          
                     ],
                   ),
                   
