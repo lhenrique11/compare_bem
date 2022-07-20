@@ -84,6 +84,7 @@ void initState() {
     //Widget da lista de ofertas 
 
     Widget _ofertasList1 = Container(
+      alignment: Alignment.center ,
       margin: EdgeInsets.symmetric(vertical: 10.0),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -121,51 +122,39 @@ void initState() {
           child:  Container(
             margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
             decoration: BoxDecoration(
-            color: Colors.transparent,
+            color: Colors.orange[700],
             borderRadius: BorderRadius.all(Radius.circular(20.0),),
             ),
-            width: 500.0,
+            width: 300.0,
             child: Container(
+
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
 
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
 
-                    Text('Confiança',
-                    textAlign: TextAlign.left,
+                    TextButton.icon(
+                    onPressed: () {}, 
+                    icon: Icon(FeatherIcons.arrowRight, size: 18, color: Colors.white,),  
+                    label: Text( 'Confiança',
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w500) 
+                      fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.w500) 
+                    ),
                     ),
 
-                    
-                    
                     ],
                   ),
-                  
-                  Padding(
-                    padding:EdgeInsets.fromLTRB(104.0, 0.0, 0.0, 0.0),
-                    child: Container(
-                      width: 120.0,
-                      height: 30.0,
-                      decoration: BoxDecoration(
-                        color: Colors.orange[700],
-                        borderRadius: BorderRadius.all(Radius.circular(20.0),),
-                      ),
-                      child:  TextButton.icon(
-                        onPressed: () {}, 
-                        icon: Icon(FeatherIcons.arrowRight, size: 12, color: Colors.white,),
-                        label: Text('Confira as ofertas',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.poppins(
-                            fontSize: 9.0, color: Colors.white, fontWeight: FontWeight.w500)), 
-                      ) ,
-                    ),
-                  )
-                  
+                         
                 ],
-              ),
+              ), 
+              
+               
             )
           ),
           ),
@@ -177,49 +166,37 @@ void initState() {
           child:  Container(
             margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
             decoration: BoxDecoration(
-            color: Colors.transparent,
+            color: Colors.orange[700],
             borderRadius: BorderRadius.all(Radius.circular(20.0),),
             ),
             width: 300.0,
             child: Container(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
 
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
 
-                    Text('Barracão',
-                    textAlign: TextAlign.left,
+                    TextButton.icon(
+                    onPressed: () {}, 
+                    icon: Icon(FeatherIcons.arrowRight, size: 18, color: Colors.white,),  
+                    label: Text( 'Barracão',
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w500) 
+                      fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.w500) 
+                    ),
                     ),
 
-                    
                     ],
                   ),
-                  
-                  Padding(
-                    padding:EdgeInsets.fromLTRB(115.0, 0.0, 0.0, 0.0),
-                    child: Container(
-                      width: 120.0,
-                      height: 30.0,
-                      decoration: BoxDecoration(
-                        color: Colors.orange[700],
-                        borderRadius: BorderRadius.all(Radius.circular(20.0),),
-                      ),
-                      child:  TextButton.icon(
-                        onPressed: () {}, 
-                        icon: Icon(FeatherIcons.arrowRight, size: 12, color: Colors.white,),
-                        label: Text('Confira as ofertas',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.poppins(
-                            fontSize: 9.0, color: Colors.white, fontWeight: FontWeight.w500)), 
-                      ) ,
-                    ),
-                  )
+                         
                 ],
-              ),
+              ), 
+              
             )
           ),
           ),
@@ -231,48 +208,38 @@ void initState() {
           child:  Container(
             margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
             decoration: BoxDecoration(
-            color: Colors.transparent,
+            color: Colors.orange[700],
             borderRadius: BorderRadius.all(Radius.circular(20.0),),
             ),
             width: 300.0,
             child: Container(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
 
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
 
-                    Text('Superbom',
-                    textAlign: TextAlign.left,
+                    TextButton.icon(
+                    onPressed: () {}, 
+                    icon: Icon(FeatherIcons.arrowRight, size: 18, color: Colors.white,),  
+                    label: Text( 'Superbom',
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w500) 
+                      fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.w500) 
                     ),
-                    
+                    ),
+
                     ],
                   ),
-                  
-                 Padding(
-                    padding:EdgeInsets.fromLTRB(105.0, 0.0, 0.0, 0.0),
-                    child: Container(
-                      width: 120.0,
-                      height: 30.0,
-                      decoration: BoxDecoration(
-                        color: Colors.orange[700],
-                        borderRadius: BorderRadius.all(Radius.circular(20.0),),
-                      ),
-                      child:  TextButton.icon(
-                        onPressed: () {}, 
-                        icon: Icon(FeatherIcons.arrowRight, size: 12, color: Colors.white,),
-                        label: Text('Confira as ofertas',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.poppins(
-                            fontSize: 9.0, color: Colors.white, fontWeight: FontWeight.w500)), 
-                      ) ,
-                    ),
-                  )
+                         
                 ],
-              ),
+              ), 
+              
+              
             )
           ),
           ),
@@ -284,47 +251,36 @@ void initState() {
           child:  Container(
             margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
             decoration: BoxDecoration(
-            color: Colors.transparent,
+            color: Colors.orange[700],
             borderRadius: BorderRadius.all(Radius.circular(20.0),),
             ),
             width: 300.0,
             child: Container(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
 
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
 
-                    Text('São Judas Tadeu',
-                    textAlign: TextAlign.left,
+                    TextButton.icon(
+                    onPressed: () {}, 
+                    icon: Icon(FeatherIcons.arrowRight, size: 18, color: Colors.white,),  
+                    label: Text( 'São Judas Tadeu',
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w500) 
-                    ),                   
+                      fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.w500) 
+                    ),
+                    ),
+
                     ],
                   ),
-                  
-                 Padding(
-                    padding:EdgeInsets.fromLTRB(46.0, 0.0, 0.0, 0.0),
-                    child: Container(
-                      width: 120.0,
-                      height: 30.0,
-                      decoration: BoxDecoration(
-                        color: Colors.orange[700],
-                        borderRadius: BorderRadius.all(Radius.circular(20.0),),
-                      ),
-                      child:  TextButton.icon(
-                        onPressed: () {}, 
-                        icon: Icon(FeatherIcons.arrowRight, size: 12, color: Colors.white,),
-                        label: Text('Confira as ofertas',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.poppins(
-                            fontSize: 9.0, color: Colors.white, fontWeight: FontWeight.w500)), 
-                      ) ,
-                    ),
-                  )
                 ],
-              ),
+              ), 
+               
             )
           ), 
           ),
@@ -336,49 +292,38 @@ void initState() {
           child:  Container(
             margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
             decoration: BoxDecoration(
-            color: Colors.transparent,
+            color: Colors.orange[700],
             borderRadius: BorderRadius.all(Radius.circular(20.0),),
             ),
             width: 300.0,
             child: Container(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
 
-                 Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
 
-                    Text('Pão de Açúcar',
-                    textAlign: TextAlign.left,
+                    TextButton.icon(
+                    onPressed: () {}, 
+                    icon: Icon(FeatherIcons.arrowRight, size: 18, color: Colors.white,),  
+                    label: Text( 'Pão de Açúcar',
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w500) 
+                      fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.w500) 
                     ),
-                    
+                    ),
+
                     ],
                   ),
-                  
-                 Padding(
-                    padding:EdgeInsets.fromLTRB(68.0, 0.0, 0.0, 0.0),
-                    child: Container(
-                      width: 120.0,
-                      height: 30.0,
-                      decoration: BoxDecoration(
-                        color: Colors.orange[700],
-                        borderRadius: BorderRadius.all(Radius.circular(20.0),),
-                      ),
-                      child:  TextButton.icon(
-                        onPressed: () {}, 
-                        icon: Icon(FeatherIcons.arrowRight, size: 12, color: Colors.white,),
-                        label: Text('Confira as ofertas',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.poppins(
-                            fontSize: 9.0, color: Colors.white, fontWeight: FontWeight.w500)), 
-                      ) ,
-                    ),
-                  )
-
+                         
                 ],
-              ),
+              ), 
+              
+              
             )
           ),
           ),
@@ -390,47 +335,37 @@ void initState() {
           child:   Container(
             margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
             decoration: BoxDecoration(
-            color: Colors.transparent,
+            color: Colors.orange[700],
             borderRadius: BorderRadius.all(Radius.circular(20.0),),
             ),
             width: 300.0,
             child: Container(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
 
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
 
-                    Text('Sams Club',
-                    textAlign: TextAlign.left,
+                    TextButton.icon(
+                    onPressed: () {}, 
+                    icon: Icon(FeatherIcons.arrowRight, size: 18, color: Colors.white,),  
+                    label: Text( 'Sams Club',
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w500) 
-                    ),                    
+                      fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.w500) 
+                    ),
+                    ),
+
                     ],
                   ),
-                  
-                  Padding(
-                    padding:EdgeInsets.fromLTRB(103.0, 0.0, 0.0, 0.0),
-                    child: Container(
-                      width: 120.0,
-                      height: 30.0,
-                      decoration: BoxDecoration(
-                        color: Colors.orange[700],
-                        borderRadius: BorderRadius.all(Radius.circular(20.0),),
-                      ),
-                      child:  TextButton.icon(
-                        onPressed: () {}, 
-                        icon: Icon(FeatherIcons.arrowRight, size: 12, color: Colors.white,),
-                        label: Text('Confira as ofertas',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.poppins(
-                            fontSize: 9.0, color: Colors.white, fontWeight: FontWeight.w500)), 
-                      ) ,
-                    ),
-                  )
+                         
                 ],
-              ),
+              ), 
+               
             )
           ),
           ),
@@ -442,50 +377,37 @@ void initState() {
           child:  Container(
             margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
             decoration: BoxDecoration(
-              color: Colors.transparent,
+              color: Colors.orange[700],
               borderRadius: BorderRadius.all(Radius.circular(20.0),),
             ),
             width: 300.0,
             child: Container(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
 
-
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
 
-                    Text('Panelão',
-                    textAlign: TextAlign.left,
+                    TextButton.icon(
+                    onPressed: () {}, 
+                    icon: Icon(FeatherIcons.arrowRight, size: 18, color: Colors.white,),  
+                    label: Text( 'Panelão',
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w500) 
+                      fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.w500) 
+                    ),
                     ),
 
                     ],
                   ),
-                  
-                  Padding(
-                    padding:EdgeInsets.fromLTRB(126.0, 0.0, 0.0, 0.0),
-                    child: Container(
-                      width: 120.0,
-                      height: 30.0,
-                      decoration: BoxDecoration(
-                        color: Colors.orange[700],
-                        borderRadius: BorderRadius.all(Radius.circular(20.0),),
-                      ),
-                      child:  TextButton.icon(
-                        onPressed: () {}, 
-                        icon: Icon(FeatherIcons.arrowRight, size: 12, color: Colors.white,),
-                        label: Text('Confira as ofertas',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.poppins(
-                            fontSize: 9.0, color: Colors.white, fontWeight: FontWeight.w500)), 
-                      ) ,
-                    ),
-                  )
-
+                         
                 ],
-              ),
+              ), 
+              
             )
           ), 
           ),
@@ -709,7 +631,7 @@ void initState() {
             BoxShadow(
               color: Colors.grey.shade200,
               spreadRadius: 1,
-              blurRadius: 11,
+              blurRadius: 1,
             offset: Offset(0,0))]
             ),
             width: 150.0,
@@ -746,7 +668,7 @@ void initState() {
             BoxShadow(
             color: Colors.grey.shade200,
             spreadRadius: 1,
-            blurRadius: 11,
+            blurRadius: 1,
             offset: Offset(0,0))]
             ),
             width: 150.0,
@@ -785,7 +707,7 @@ void initState() {
             BoxShadow(
             color: Colors.grey.shade200,
             spreadRadius: 1,
-            blurRadius: 11,
+            blurRadius: 1,
             offset: Offset(0,0))]
             ),
             width: 150.0,
@@ -830,7 +752,7 @@ void initState() {
             BoxShadow(
             color: Colors.grey.shade200,
             spreadRadius: 1,
-            blurRadius: 11,
+            blurRadius: 1,
             offset: Offset(0,0))]
             ),
             width: 150.0,
@@ -926,6 +848,7 @@ void initState() {
           ),
 
 
+          Divider(color: Colors.transparent),
           Divider(color: Colors.transparent),
 
 
