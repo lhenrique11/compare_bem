@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:comparebem/main.dart';
+import 'package:comparebem/ui/alerta_ofertas.dart';
+import 'package:comparebem/ui/compare_ofertas.dart';
 import 'package:comparebem/ui/lista_compras.dart';
+import 'package:comparebem/ui/ofertas_atacado.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -80,6 +84,15 @@ void initState() {
   @override
   Widget build(BuildContext context) {
 
+
+    final Stream<QuerySnapshot> _clubeconfiStream =
+    FirebaseFirestore.instance.collection('clubeconfianca').snapshots();
+    final Stream<QuerySnapshot> _clubetausteStream =
+    FirebaseFirestore.instance.collection('clubetauste').snapshots();
+    final Stream<QuerySnapshot> _clubemakroStream =
+    FirebaseFirestore.instance.collection('clubetauste').snapshots();
+    final Stream<QuerySnapshot> _clubesjStream =
+    FirebaseFirestore.instance.collection('clubesaojudas').snapshots();
 
     //Widget da lista de ofertas 
 
@@ -468,7 +481,9 @@ void initState() {
                       Padding(
                         padding: EdgeInsets.fromLTRB(110.0, 20.0, 0.0, 0.0),
                         child: TextButton.icon(
-                          onPressed: () => launchUrlString('https://www.confianca.com.br/'),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => OfertaAtacado()));
+                          },
                           icon: FaIcon(FeatherIcons.arrowRightCircle, color: Colors.white), 
                           label: Text('Veja as ofertas',
                            textAlign: TextAlign.center,
@@ -527,7 +542,9 @@ void initState() {
                       Padding(
                         padding: EdgeInsets.fromLTRB(110.0, 20.0, 0.0, 0.0),
                         child: TextButton.icon(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => CompareOfertas()));
+                          },
                           icon: FaIcon(FeatherIcons.arrowRightCircle, color: Colors.white), 
                           label: Text('Veja as ofertas',
                            textAlign: TextAlign.center,
@@ -585,7 +602,9 @@ void initState() {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:[
                       TextButton.icon(
-                      onPressed: () => launchUrlString('https://www.paodeacucar.com/'),
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => AlertaPage()));
+                      },
                       icon: FaIcon(FeatherIcons.arrowRightCircle, color: Colors.white), 
                       label: Text('Veja as ofertas',
                         textAlign: TextAlign.center,
@@ -643,7 +662,107 @@ void initState() {
                   Padding(
                     padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
                     child: TextButton.icon(
-                      onPressed: (){},
+                      onPressed: (){
+                        showModalBottomSheet(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0),
+                        )),
+                          context: context, 
+                          builder: (context){
+                            return SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Divider(color: Colors.transparent,),
+                                  Divider(color: Colors.transparent,),
+                                  Divider(color: Colors.transparent,),
+
+                                  FadeIn(
+                                    duration: Duration(seconds: 2),
+                                    curve: Curves.easeIn,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Padding(padding: EdgeInsets.fromLTRB(30.0, 15.0, 0.0, 20.0)),
+                                        Text('Clube de Vantagens \nConfiança',
+                                          textAlign: TextAlign.left,
+                                          style: GoogleFonts.poppins(
+                                          color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w500
+                                        ) ,
+                                      ),
+                                      ],
+                                    ), 
+                                  ),
+
+                                  Divider(color: Colors.transparent,),
+                                  Divider(color: Colors.transparent,),
+
+                                  StreamBuilder<QuerySnapshot<Object?>>(
+                                    stream: _clubeconfiStream,
+                                    builder: (BuildContext context,
+                                      AsyncSnapshot<QuerySnapshot>snapshot) {
+                                        if (snapshot.hasError) {
+                                          return const Text("Lista Vazia");
+                                        }
+                                        if (snapshot.connectionState == ConnectionState.waiting) {
+                                          return const Text("Loading");
+                                        }
+                                        return FadeIn(
+                                          duration: Duration(seconds: 2),
+                                          curve: Curves.easeIn,
+                                          child: Column(
+                                            children: <Widget>[
+
+                                              Text('Veja as ofertas',
+                                                textAlign: TextAlign.left,
+                                                style: GoogleFonts.poppins(
+                                                  color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.w500
+                                                ) ,
+                                              ),
+
+                                              Divider(color: Colors.transparent,),
+                                              Divider(color: Colors.transparent,),
+                    
+                                              ListView(
+                                                padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),  
+                                                shrinkWrap: true,
+                                                physics: NeverScrollableScrollPhysics(),
+                                                scrollDirection: Axis.vertical,
+                                                children: 
+                                                snapshot.data!.docs.map((DocumentSnapshot document) {
+                                                Map<String, dynamic> data =
+                                                document.data() as Map<String, dynamic>;
+                                                return ListTile(
+                                                  title: Text(data["ofertas"] ?? "",
+                                                    style: GoogleFonts.poppins(
+                                                    color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
+                                                  ) ,
+                                                ),
+                                                subtitle: Text(data["local"] ?? "",
+                                                  style: GoogleFonts.poppins(
+                                                  color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.bold
+                                                ) ,
+                                                ),
+                                                trailing: IconButton(onPressed: (){
+                                                  //Share.share(data['texto'], subject: data['local']);
+                                                }, 
+                                                icon: Icon(FeatherIcons.share,
+                                                color: Colors.orangeAccent, size: 18.0,
+                                                )               
+                                                ), 
+                                                );
+                                                }).toList(),
+                                              ),
+                                            ],
+                                          )
+                                        );
+                                      }
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                        );
+                      },
                       icon: Image.asset('images/compras-1.png', 
                         width: 100, height: 100,), 
                       label: Text(""),     
@@ -681,7 +800,107 @@ void initState() {
                   Padding(
                     padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
                     child: TextButton.icon(
-                      onPressed: (){},
+                      onPressed: (){
+                        showModalBottomSheet(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0),
+                        )),
+                          context: context, 
+                          builder: (context){
+                            return SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Divider(color: Colors.transparent,),
+                                  Divider(color: Colors.transparent,),
+                                  Divider(color: Colors.transparent,),
+
+                                  FadeIn(
+                                    duration: Duration(seconds: 2),
+                                    curve: Curves.easeIn,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Padding(padding: EdgeInsets.fromLTRB(30.0, 15.0, 0.0, 20.0)),
+                                        Text('Clube de Vantagens \nTauste',
+                                          textAlign: TextAlign.left,
+                                          style: GoogleFonts.poppins(
+                                          color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w500
+                                        ) ,
+                                      ),
+                                      ],
+                                    ), 
+                                  ),
+
+                                  Divider(color: Colors.transparent,),
+                                  Divider(color: Colors.transparent,),
+
+                                  StreamBuilder<QuerySnapshot<Object?>>(
+                                    stream: _clubetausteStream,
+                                    builder: (BuildContext context,
+                                      AsyncSnapshot<QuerySnapshot>snapshot) {
+                                        if (snapshot.hasError) {
+                                          return const Text("Lista Vazia");
+                                        }
+                                        if (snapshot.connectionState == ConnectionState.waiting) {
+                                          return const Text("Loading");
+                                        }
+                                        return FadeIn(
+                                          duration: Duration(seconds: 2),
+                                          curve: Curves.easeIn,
+                                          child: Column(
+                                            children: <Widget>[
+
+                                              Text('Veja as ofertas',
+                                                textAlign: TextAlign.left,
+                                                style: GoogleFonts.poppins(
+                                                  color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.w500
+                                                ) ,
+                                              ),
+
+                                              Divider(color: Colors.transparent,),
+                                              Divider(color: Colors.transparent,),
+                    
+                                              ListView(
+                                                padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),  
+                                                shrinkWrap: true,
+                                                physics: NeverScrollableScrollPhysics(),
+                                                scrollDirection: Axis.vertical,
+                                                children: 
+                                                snapshot.data!.docs.map((DocumentSnapshot document) {
+                                                Map<String, dynamic> data =
+                                                document.data() as Map<String, dynamic>;
+                                                return ListTile(
+                                                  title: Text(data["ofertas"] ?? "",
+                                                    style: GoogleFonts.poppins(
+                                                    color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
+                                                  ) ,
+                                                ),
+                                                subtitle: Text(data["local"] ?? "",
+                                                  style: GoogleFonts.poppins(
+                                                  color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.bold
+                                                ) ,
+                                                ),
+                                                trailing: IconButton(onPressed: (){
+                                                  //Share.share(data['texto'], subject: data['local']);
+                                                }, 
+                                                icon: Icon(FeatherIcons.share,
+                                                color: Colors.orangeAccent, size: 18.0,
+                                                )               
+                                                ), 
+                                                );
+                                                }).toList(),
+                                              ),
+                                            ],
+                                          )
+                                        );
+                                      }
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                        );
+                      },
                       icon: Image.asset('images/compras-2.png', 
                         width: 100, height: 100,),
                         label: Text(""),    
@@ -724,7 +943,107 @@ void initState() {
                       Padding(
                         padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
                         child: TextButton.icon(
-                          onPressed: (){},
+                          onPressed: (){
+                            showModalBottomSheet(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0),
+                        )),
+                          context: context, 
+                          builder: (context){
+                            return SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Divider(color: Colors.transparent,),
+                                  Divider(color: Colors.transparent,),
+                                  Divider(color: Colors.transparent,),
+
+                                  FadeIn(
+                                    duration: Duration(seconds: 2),
+                                    curve: Curves.easeIn,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Padding(padding: EdgeInsets.fromLTRB(30.0, 15.0, 0.0, 20.0)),
+                                        Text('Clube de Vantagens \nMakro',
+                                          textAlign: TextAlign.left,
+                                          style: GoogleFonts.poppins(
+                                          color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w500
+                                        ) ,
+                                        ),
+                                      ],
+                                    ), 
+                                  ),
+
+                                  Divider(color: Colors.transparent,),
+                                  Divider(color: Colors.transparent,),
+
+                                  StreamBuilder<QuerySnapshot<Object?>>(
+                                    stream: _clubemakroStream,
+                                    builder: (BuildContext context,
+                                      AsyncSnapshot<QuerySnapshot>snapshot) {
+                                        if (snapshot.hasError) {
+                                          return const Text("Lista Vazia");
+                                        }
+                                        if (snapshot.connectionState == ConnectionState.waiting) {
+                                          return const Text("Loading");
+                                        }
+                                        return FadeIn(
+                                          duration: Duration(seconds: 2),
+                                          curve: Curves.easeIn,
+                                          child: Column(
+                                            children: <Widget>[
+
+                                              Text('Veja as ofertas',
+                                                textAlign: TextAlign.left,
+                                                style: GoogleFonts.poppins(
+                                                  color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.w500
+                                                ) ,
+                                              ),
+
+                                              Divider(color: Colors.transparent,),
+                                              Divider(color: Colors.transparent,),
+                    
+                                              ListView(
+                                                padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),  
+                                                shrinkWrap: true,
+                                                physics: NeverScrollableScrollPhysics(),
+                                                scrollDirection: Axis.vertical,
+                                                children: 
+                                                snapshot.data!.docs.map((DocumentSnapshot document) {
+                                                Map<String, dynamic> data =
+                                                document.data() as Map<String, dynamic>;
+                                                return ListTile(
+                                                  title: Text(data["ofertas"] ?? "",
+                                                    style: GoogleFonts.poppins(
+                                                    color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
+                                                  ) ,
+                                                ),
+                                                subtitle: Text(data["local"] ?? "",
+                                                  style: GoogleFonts.poppins(
+                                                  color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.bold
+                                                ) ,
+                                                ),
+                                                trailing: IconButton(onPressed: (){
+                                                  //Share.share(data['texto'], subject: data['local']);
+                                                }, 
+                                                icon: Icon(FeatherIcons.share,
+                                                color: Colors.orangeAccent, size: 18.0,
+                                                )               
+                                                ), 
+                                                );
+                                                }).toList(),
+                                              ),
+                                            ],
+                                          )
+                                        );
+                                      }
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                        );
+                          },
                           icon: Image.asset('images/compras-6.png', 
                           width: 100, height: 100,),
                           label: Text(""), 
@@ -766,7 +1085,107 @@ void initState() {
                   Padding(
                     padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
                     child: TextButton.icon(
-                      onPressed: (){},
+                      onPressed: (){
+                        showModalBottomSheet(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0),
+                        )),
+                          context: context, 
+                          builder: (context){
+                            return SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Divider(color: Colors.transparent,),
+                                  Divider(color: Colors.transparent,),
+                                  Divider(color: Colors.transparent,),
+
+                                  FadeIn(
+                                    duration: Duration(seconds: 2),
+                                    curve: Curves.easeIn,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Padding(padding: EdgeInsets.fromLTRB(30.0, 15.0, 0.0, 20.0)),
+                                        Text('Clube de Vantagens \nSão Judas Tadeu',
+                                          textAlign: TextAlign.left,
+                                          style: GoogleFonts.poppins(
+                                          color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w500
+                                        ) ,
+                                      ),
+                                      ],
+                                    ), 
+                                  ),
+
+                                  Divider(color: Colors.transparent,),
+                                  Divider(color: Colors.transparent,),
+
+                                  StreamBuilder<QuerySnapshot<Object?>>(
+                                    stream: _clubesjStream,
+                                    builder: (BuildContext context,
+                                      AsyncSnapshot<QuerySnapshot>snapshot) {
+                                        if (snapshot.hasError) {
+                                          return const Text("Lista Vazia");
+                                        }
+                                        if (snapshot.connectionState == ConnectionState.waiting) {
+                                          return const Text("Loading");
+                                        }
+                                        return FadeIn(
+                                          duration: Duration(seconds: 2),
+                                          curve: Curves.easeIn,
+                                          child: Column(
+                                            children: <Widget>[
+
+                                              Text('Veja as ofertas',
+                                                textAlign: TextAlign.left,
+                                                style: GoogleFonts.poppins(
+                                                  color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.w500
+                                                ) ,
+                                              ),
+
+                                              Divider(color: Colors.transparent,),
+                                              Divider(color: Colors.transparent,),
+                    
+                                              ListView(
+                                                padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),  
+                                                shrinkWrap: true,
+                                                physics: NeverScrollableScrollPhysics(),
+                                                scrollDirection: Axis.vertical,
+                                                children: 
+                                                snapshot.data!.docs.map((DocumentSnapshot document) {
+                                                Map<String, dynamic> data =
+                                                document.data() as Map<String, dynamic>;
+                                                return ListTile(
+                                                  title: Text(data["ofertas"] ?? "",
+                                                    style: GoogleFonts.poppins(
+                                                    color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
+                                                  ) ,
+                                                ),
+                                                subtitle: Text(data["local"] ?? "",
+                                                  style: GoogleFonts.poppins(
+                                                  color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.bold
+                                                ) ,
+                                                ),
+                                                trailing: IconButton(onPressed: (){
+                                                  //Share.share(data['texto'], subject: data['local']);
+                                                }, 
+                                                icon: Icon(FeatherIcons.share,
+                                                color: Colors.orangeAccent, size: 18.0,
+                                                )               
+                                                ), 
+                                                );
+                                                }).toList(),
+                                              ),
+                                            ],
+                                          )
+                                        );
+                                      }
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                        );
+                      },
                       icon: Image.asset('images/compras-13.png', 
                         width: 100, height: 100,),
                         label: Text(""), 
