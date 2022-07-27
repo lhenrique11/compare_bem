@@ -53,6 +53,7 @@ void initState() {
             Divider(color: Colors.transparent,),
             Divider(color: Colors.transparent,),
             Divider(color: Colors.transparent,),
+            Divider(color: Colors.transparent,),
 
             FadeIn(
             duration: Duration(seconds: 2),
@@ -61,10 +62,10 @@ void initState() {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(padding: EdgeInsets.fromLTRB(20.0, 15.0, 0.0, 20.0)),
-                  Text('Alerta de \nOfertas',
+                  Text('Alerta de Ofertas',
                     textAlign: TextAlign.left,
-                    style: GoogleFonts.montserrat(
-                      color: Colors.black, fontSize: 24.0, fontWeight: FontWeight.bold
+                    style: GoogleFonts.poppins(
+                      color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.w500
                     ) ,
                   ),
                   
@@ -91,11 +92,21 @@ void initState() {
                 child: Column(
                   children: <Widget>[
 
-                    Text('Veja as ofertas',
-                    textAlign: TextAlign.left,
-                    style: GoogleFonts.montserrat(
-                      color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.bold
-                    ) ,
+                   Container(
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.all(Radius.circular(20.0),),
+                    ),
+                    width: 170.0,
+                    height: 40.0,
+                    child: Text('Veja as ofertas',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.poppins(
+                        color: Colors.white, fontSize: 12.0, fontWeight: FontWeight.w500
+                      ) ,
+                    ),
                   ),
 
                     Divider(color: Colors.transparent,),
@@ -110,23 +121,29 @@ void initState() {
                       Map<String, dynamic> data =
                       document.data() as Map<String, dynamic>;
                       return ListTile(
+                        minVerticalPadding: 15.0,
                         title: Text(data["texto"] ?? "",
-                          style: GoogleFonts.montserrat(
-                          color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.bold
+                          style: GoogleFonts.poppins(
+                          color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
                         ) ,
                       ),
-                      subtitle: Text(data["local"] ?? "",
-                          style: GoogleFonts.montserrat(
+                      subtitle: Container(
+                        padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                        alignment: Alignment.center,
+                        width: 350.0,
+                        height: 40.0,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.all(Radius.circular(10.0),),
+                        ),
+                        child: Text(data["local"] ?? "",
+                          style: GoogleFonts.poppins(
                           color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.bold
                         ) ,
-                      ),
-                      trailing: IconButton(onPressed: (){
-                        Share.share(data['texto'], subject: data['local']);
-                      }, 
-                      icon: FaIcon(FontAwesomeIcons.share,
-                        color: Colors.orangeAccent, size: 18.0,
-                      )               
                       ), 
+                      )
+                       
+
                     );
                     }).toList(),
                   ),
@@ -137,28 +154,6 @@ void initState() {
             ),
 
             Divider(color: Colors.transparent,),
-
-            Container(
-              margin: EdgeInsets.fromLTRB(10.0, 10.0, 5.0, 10.0),
-              decoration: BoxDecoration(
-                color: Colors.orange[700],
-                borderRadius: BorderRadius.all(Radius.circular(40.0),),
-              ),
-              width: 200.0,
-              child: TextButton.icon(
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
-                },
-                icon: FaIcon(FontAwesomeIcons.arrowCircleRight, color: Colors.white), 
-                label: Text('Veja os folhetos de ofertas',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.montserrat(
-                    color: Colors.white, fontSize: 15.0, fontWeight: FontWeight.bold
-                  ) ,
-                ),  
-              ),
-            ),
-
             Divider(color: Colors.transparent,),
               
             Container(

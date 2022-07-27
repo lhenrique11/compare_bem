@@ -7,7 +7,7 @@ import 'package:comparebem/ui/ofertas_atacado.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -93,6 +93,23 @@ void initState() {
     FirebaseFirestore.instance.collection('clubetauste').snapshots();
     final Stream<QuerySnapshot> _clubesjStream =
     FirebaseFirestore.instance.collection('clubesaojudas').snapshots();
+    final Stream<QuerySnapshot> _confiancaStream =
+    FirebaseFirestore.instance.collection('confianca').snapshots();
+    final Stream<QuerySnapshot> _barracaoStream =
+    FirebaseFirestore.instance.collection('barracao').snapshots();
+    final Stream<QuerySnapshot> _panelaoStream =
+    FirebaseFirestore.instance.collection('panelao').snapshots();
+    final Stream<QuerySnapshot> _pdaStream =
+    FirebaseFirestore.instance.collection('paodeacucar').snapshots();
+    final Stream<QuerySnapshot> _samsStream =
+    FirebaseFirestore.instance.collection('sams').snapshots();
+    final Stream<QuerySnapshot> _superbomStream =
+    FirebaseFirestore.instance.collection('superbom').snapshots();
+     final Stream<QuerySnapshot> _saojudasStream =
+    FirebaseFirestore.instance.collection('saojudastadeu').snapshots();
+     final Stream<QuerySnapshot> _tausteStream =
+    FirebaseFirestore.instance.collection('tauste').snapshots();
+
 
     //Widget da lista de ofertas 
 
@@ -116,7 +133,7 @@ void initState() {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 18.0)),
-                  Text('Principais ofertas',
+                  Text('Principais Ofertas',
                     textAlign: TextAlign.left,
                     style: GoogleFonts.poppins(
                       color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.w500
@@ -152,7 +169,99 @@ void initState() {
                     children: [
 
                     TextButton.icon(
-                    onPressed: () {}, 
+                    onPressed: () {
+                      showModalBottomSheet(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0),
+                        )),
+                        context: context, 
+                        builder: (context){
+                          return SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+
+                                FadeIn(
+                                  duration: Duration(seconds: 2),
+                                  curve: Curves.easeIn,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(padding: EdgeInsets.fromLTRB(30.0, 15.0, 0.0, 20.0)),
+                                      Text('Confiança Supermercados',
+                                        textAlign: TextAlign.left,
+                                        style: GoogleFonts.poppins(
+                                        color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w500
+                                        ) ,
+                                      ),
+                                    ],
+                                  ), 
+                                ),
+
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+
+                                StreamBuilder<QuerySnapshot<Object?>>(
+                                  stream: _confiancaStream,
+                                  builder: (BuildContext context,
+                                    AsyncSnapshot<QuerySnapshot>snapshot) {
+                                      if (snapshot.hasError) {
+                                        return const Text("Lista Vazia");
+                                      }
+                                      if (snapshot.connectionState == ConnectionState.waiting) {
+                                         return const Text("Loading");
+                                      }
+                                      return FadeIn(
+                                        duration: Duration(seconds: 2),
+                                        curve: Curves.easeIn,
+                                        child: Column(
+                                          children: <Widget>[
+
+                                            Text('Veja as principais ofertas',
+                                              textAlign: TextAlign.left,
+                                              style: GoogleFonts.poppins(
+                                                color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.w500
+                                              ) ,
+                                            ),
+                    
+                                            ListView(
+                                              padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),  
+                                              shrinkWrap: true,
+                                              physics: NeverScrollableScrollPhysics(),
+                                              scrollDirection: Axis.vertical,
+                                              children: 
+                                              snapshot.data!.docs.map((DocumentSnapshot document) {
+                                                Map<String, dynamic> data =
+                                                document.data() as Map<String, dynamic>;
+                                                return ListTile(
+                                                  
+                                                  title: Text(data["ofertas"] ?? "",
+                                                    style: GoogleFonts.poppins(
+                                                    color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
+                                                  ) ,
+                                                ),
+                                                subtitle: Text(data["dia"] ?? "",
+                                                  style: GoogleFonts.poppins(
+                                                  color: Colors.black, fontSize: 10.0, fontWeight: FontWeight.bold
+                                                ) ,
+                                                ),
+                                                 
+                                                );
+                                              }).toList(),
+                                            ),
+                                          ],
+                                        )
+                                      );
+                                    }
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      );
+                    }, 
                     icon: Icon(FeatherIcons.arrowRight, size: 18, color: Colors.white,),  
                     label: Text( 'Confiança',
                     textAlign: TextAlign.center,
@@ -195,9 +304,234 @@ void initState() {
                     children: [
 
                     TextButton.icon(
-                    onPressed: () {}, 
+                    onPressed: () {
+                      showModalBottomSheet(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0),
+                        )),
+                        context: context, 
+                        builder: (context){
+                          return SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+
+                                FadeIn(
+                                  duration: Duration(seconds: 2),
+                                  curve: Curves.easeIn,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(padding: EdgeInsets.fromLTRB(30.0, 15.0, 0.0, 20.0)),
+                                      Text('Barracão Supermercados',
+                                        textAlign: TextAlign.left,
+                                        style: GoogleFonts.poppins(
+                                        color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w500
+                                        ) ,
+                                      ),
+                                    ],
+                                  ), 
+                                ),
+
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+
+                                StreamBuilder<QuerySnapshot<Object?>>(
+                                  stream: _barracaoStream,
+                                  builder: (BuildContext context,
+                                    AsyncSnapshot<QuerySnapshot>snapshot) {
+                                      if (snapshot.hasError) {
+                                        return const Text("Lista Vazia");
+                                      }
+                                      if (snapshot.connectionState == ConnectionState.waiting) {
+                                         return const Text("Loading");
+                                      }
+                                      return FadeIn(
+                                        duration: Duration(seconds: 2),
+                                        curve: Curves.easeIn,
+                                        child: Column(
+                                          children: <Widget>[
+
+                                            Text('Veja as principais ofertas',
+                                              textAlign: TextAlign.left,
+                                              style: GoogleFonts.poppins(
+                                                color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.w500
+                                              ) ,
+                                            ),
+                    
+                                            ListView(
+                                              padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),  
+                                              shrinkWrap: true,
+                                              physics: NeverScrollableScrollPhysics(),
+                                              scrollDirection: Axis.vertical,
+                                              children: 
+                                              snapshot.data!.docs.map((DocumentSnapshot document) {
+                                                Map<String, dynamic> data =
+                                                document.data() as Map<String, dynamic>;
+                                                return ListTile(
+                                                  
+                                                  title: Text(data["ofertas"] ?? "",
+                                                    style: GoogleFonts.poppins(
+                                                    color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
+                                                  ) ,
+                                                ),
+                                                subtitle: Text(data["dia"] ?? "",
+                                                  style: GoogleFonts.poppins(
+                                                  color: Colors.black, fontSize: 10.0, fontWeight: FontWeight.bold
+                                                ) ,
+                                                ),
+                                                
+                                                );
+                                              }).toList(),
+                                            ),
+                                          ],
+                                        )
+                                      );
+                                    }
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      );
+                    }, 
                     icon: Icon(FeatherIcons.arrowRight, size: 18, color: Colors.white,),  
                     label: Text( 'Barracão',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.w500) 
+                    ),
+                    ),
+
+                    ],
+                  ),
+                         
+                ],
+              ), 
+              
+            )
+          ),
+          ),
+
+          FadeIn(
+          duration: Duration(seconds: 2),
+          curve: Curves.easeIn,
+          child:  Container(
+            margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+            decoration: BoxDecoration(
+            color: Colors.orange[700],
+            borderRadius: BorderRadius.all(Radius.circular(20.0),),
+            ),
+            width: 300.0,
+            child: Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+
+                    TextButton.icon(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0),
+                        )),
+                        context: context, 
+                        builder: (context){
+                          return SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+
+                                FadeIn(
+                                  duration: Duration(seconds: 2),
+                                  curve: Curves.easeIn,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(padding: EdgeInsets.fromLTRB(30.0, 15.0, 0.0, 20.0)),
+                                      Text('Tauste Supermercados',
+                                        textAlign: TextAlign.left,
+                                        style: GoogleFonts.poppins(
+                                        color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w500
+                                        ) ,
+                                      ),
+                                    ],
+                                  ), 
+                                ),
+
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+
+                                StreamBuilder<QuerySnapshot<Object?>>(
+                                  stream: _tausteStream,
+                                  builder: (BuildContext context,
+                                    AsyncSnapshot<QuerySnapshot>snapshot) {
+                                      if (snapshot.hasError) {
+                                        return const Text("Lista Vazia");
+                                      }
+                                      if (snapshot.connectionState == ConnectionState.waiting) {
+                                         return const Text("Loading");
+                                      }
+                                      return FadeIn(
+                                        duration: Duration(seconds: 2),
+                                        curve: Curves.easeIn,
+                                        child: Column(
+                                          children: <Widget>[
+
+                                            Text('Veja as principais ofertas',
+                                              textAlign: TextAlign.left,
+                                              style: GoogleFonts.poppins(
+                                                color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.w500
+                                              ) ,
+                                            ),
+                    
+                                            ListView(
+                                              padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),  
+                                              shrinkWrap: true,
+                                              physics: NeverScrollableScrollPhysics(),
+                                              scrollDirection: Axis.vertical,
+                                              children: 
+                                              snapshot.data!.docs.map((DocumentSnapshot document) {
+                                                Map<String, dynamic> data =
+                                                document.data() as Map<String, dynamic>;
+                                                return ListTile(
+                                                  
+                                                  title: Text(data["ofertas"] ?? "",
+                                                    style: GoogleFonts.poppins(
+                                                    color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
+                                                  ) ,
+                                                ),
+                                                subtitle: Text(data["dia"] ?? "",
+                                                  style: GoogleFonts.poppins(
+                                                  color: Colors.black, fontSize: 10.0, fontWeight: FontWeight.bold
+                                                ) ,
+                                                ),
+                                                
+                                                );
+                                              }).toList(),
+                                            ),
+                                          ],
+                                        )
+                                      );
+                                    }
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      );
+                    }, 
+                    icon: Icon(FeatherIcons.arrowRight, size: 18, color: Colors.white,),  
+                    label: Text( 'Tauste',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.w500) 
@@ -237,7 +571,99 @@ void initState() {
                     children: [
 
                     TextButton.icon(
-                    onPressed: () {}, 
+                    onPressed: () {
+                      showModalBottomSheet(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0),
+                        )),
+                        context: context, 
+                        builder: (context){
+                          return SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+
+                                FadeIn(
+                                  duration: Duration(seconds: 2),
+                                  curve: Curves.easeIn,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(padding: EdgeInsets.fromLTRB(30.0, 15.0, 0.0, 20.0)),
+                                      Text('Superbom Supermercados',
+                                        textAlign: TextAlign.left,
+                                        style: GoogleFonts.poppins(
+                                        color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w500
+                                        ) ,
+                                      ),
+                                    ],
+                                  ), 
+                                ),
+
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+
+                                StreamBuilder<QuerySnapshot<Object?>>(
+                                  stream: _superbomStream,
+                                  builder: (BuildContext context,
+                                    AsyncSnapshot<QuerySnapshot>snapshot) {
+                                      if (snapshot.hasError) {
+                                        return const Text("Lista Vazia");
+                                      }
+                                      if (snapshot.connectionState == ConnectionState.waiting) {
+                                         return const Text("Loading");
+                                      }
+                                      return FadeIn(
+                                        duration: Duration(seconds: 2),
+                                        curve: Curves.easeIn,
+                                        child: Column(
+                                          children: <Widget>[
+
+                                            Text('Veja as principais ofertas',
+                                              textAlign: TextAlign.left,
+                                              style: GoogleFonts.poppins(
+                                                color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.w500
+                                              ) ,
+                                            ),
+                    
+                                            ListView(
+                                              padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),  
+                                              shrinkWrap: true,
+                                              physics: NeverScrollableScrollPhysics(),
+                                              scrollDirection: Axis.vertical,
+                                              children: 
+                                              snapshot.data!.docs.map((DocumentSnapshot document) {
+                                                Map<String, dynamic> data =
+                                                document.data() as Map<String, dynamic>;
+                                                return ListTile(
+                                                  
+                                                  title: Text(data["ofertas"] ?? "",
+                                                    style: GoogleFonts.poppins(
+                                                    color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
+                                                  ) ,
+                                                ),
+                                                subtitle: Text(data["dia"] ?? "",
+                                                  style: GoogleFonts.poppins(
+                                                  color: Colors.black, fontSize: 10.0, fontWeight: FontWeight.bold
+                                                ) ,
+                                                ),
+                                                 
+                                                );
+                                              }).toList(),
+                                            ),
+                                          ],
+                                        )
+                                      );
+                                    }
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      );
+                    }, 
                     icon: Icon(FeatherIcons.arrowRight, size: 18, color: Colors.white,),  
                     label: Text( 'Superbom',
                     textAlign: TextAlign.center,
@@ -280,7 +706,99 @@ void initState() {
                     children: [
 
                     TextButton.icon(
-                    onPressed: () {}, 
+                    onPressed: () {
+                      showModalBottomSheet(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0),
+                        )),
+                        context: context, 
+                        builder: (context){
+                          return SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+
+                                FadeIn(
+                                  duration: Duration(seconds: 2),
+                                  curve: Curves.easeIn,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(padding: EdgeInsets.fromLTRB(30.0, 15.0, 0.0, 20.0)),
+                                      Text('Supermercados \nSão Judas Tadeu ',
+                                        textAlign: TextAlign.left,
+                                        style: GoogleFonts.poppins(
+                                        color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w500
+                                        ) ,
+                                      ),
+                                    ],
+                                  ), 
+                                ),
+
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+
+                                StreamBuilder<QuerySnapshot<Object?>>(
+                                  stream: _saojudasStream,
+                                  builder: (BuildContext context,
+                                    AsyncSnapshot<QuerySnapshot>snapshot) {
+                                      if (snapshot.hasError) {
+                                        return const Text("Lista Vazia");
+                                      }
+                                      if (snapshot.connectionState == ConnectionState.waiting) {
+                                         return const Text("Loading");
+                                      }
+                                      return FadeIn(
+                                        duration: Duration(seconds: 2),
+                                        curve: Curves.easeIn,
+                                        child: Column(
+                                          children: <Widget>[
+
+                                            Text('Veja as principais ofertas',
+                                              textAlign: TextAlign.left,
+                                              style: GoogleFonts.poppins(
+                                                color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.w500
+                                              ) ,
+                                            ),
+
+                                            ListView(
+                                              padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),  
+                                              shrinkWrap: true,
+                                              physics: NeverScrollableScrollPhysics(),
+                                              scrollDirection: Axis.vertical,
+                                              children: 
+                                              snapshot.data!.docs.map((DocumentSnapshot document) {
+                                                Map<String, dynamic> data =
+                                                document.data() as Map<String, dynamic>;
+                                                return ListTile(
+                                                  
+                                                  title: Text(data["ofertas"] ?? "",
+                                                    style: GoogleFonts.poppins(
+                                                    color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
+                                                  ) ,
+                                                ),
+                                                subtitle: Text(data["dia"] ?? "",
+                                                  style: GoogleFonts.poppins(
+                                                  color: Colors.black, fontSize: 10.0, fontWeight: FontWeight.bold
+                                                ) ,
+                                                ),
+                                                 
+                                                );
+                                              }).toList(),
+                                            ),
+                                          ],
+                                        )
+                                      );
+                                    }
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      );
+                    }, 
                     icon: Icon(FeatherIcons.arrowRight, size: 18, color: Colors.white,),  
                     label: Text( 'São Judas Tadeu',
                     textAlign: TextAlign.center,
@@ -321,7 +839,100 @@ void initState() {
                     children: [
 
                     TextButton.icon(
-                    onPressed: () {}, 
+                    onPressed: () {
+                      showModalBottomSheet(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0),
+                        )),
+                        context: context, 
+                        builder: (context){
+                          return SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+
+                                FadeIn(
+                                  duration: Duration(seconds: 2),
+                                  curve: Curves.easeIn,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(padding: EdgeInsets.fromLTRB(30.0, 15.0, 0.0, 20.0)),
+                                      Text('Pão de Açucar',
+                                        textAlign: TextAlign.left,
+                                        style: GoogleFonts.poppins(
+                                        color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w500
+                                        ) ,
+                                      ),
+                                    ],
+                                  ), 
+                                ),
+
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+
+                                StreamBuilder<QuerySnapshot<Object?>>(
+                                  stream: _pdaStream,
+                                  builder: (BuildContext context,
+                                    AsyncSnapshot<QuerySnapshot>snapshot) {
+                                      if (snapshot.hasError) {
+                                        return const Text("Lista Vazia");
+                                      }
+                                      if (snapshot.connectionState == ConnectionState.waiting) {
+                                         return const Text("Loading");
+                                      }
+                                      return FadeIn(
+                                        duration: Duration(seconds: 2),
+                                        curve: Curves.easeIn,
+                                        child: Column(
+                                          children: <Widget>[
+
+                                            Text('Veja as principais ofertas',
+                                              textAlign: TextAlign.left,
+                                              style: GoogleFonts.poppins(
+                                                color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.w500
+                                              ) ,
+                                            ),
+                                            
+                    
+                                            ListView(
+                                              padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),  
+                                              shrinkWrap: true,
+                                              physics: NeverScrollableScrollPhysics(),
+                                              scrollDirection: Axis.vertical,
+                                              children: 
+                                              snapshot.data!.docs.map((DocumentSnapshot document) {
+                                                Map<String, dynamic> data =
+                                                document.data() as Map<String, dynamic>;
+                                                return ListTile(
+                                                  
+                                                  title: Text(data["ofertas"] ?? "",
+                                                    style: GoogleFonts.poppins(
+                                                    color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
+                                                  ) ,
+                                                ),
+                                                subtitle: Text(data["dia"] ?? "",
+                                                  style: GoogleFonts.poppins(
+                                                  color: Colors.black, fontSize: 10.0, fontWeight: FontWeight.bold
+                                                ) ,
+                                                ),
+                                                
+                                                );
+                                              }).toList(),
+                                            ),
+                                          ],
+                                        )
+                                      );
+                                    }
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      );
+                    }, 
                     icon: Icon(FeatherIcons.arrowRight, size: 18, color: Colors.white,),  
                     label: Text( 'Pão de Açúcar',
                     textAlign: TextAlign.center,
@@ -364,7 +975,99 @@ void initState() {
                     children: [
 
                     TextButton.icon(
-                    onPressed: () {}, 
+                    onPressed: () {
+                      showModalBottomSheet(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0),
+                        )),
+                        context: context, 
+                        builder: (context){
+                          return SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+
+                                FadeIn(
+                                  duration: Duration(seconds: 2),
+                                  curve: Curves.easeIn,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(padding: EdgeInsets.fromLTRB(30.0, 15.0, 0.0, 20.0)),
+                                      Text('Sams Club',
+                                        textAlign: TextAlign.left,
+                                        style: GoogleFonts.poppins(
+                                        color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w500
+                                        ) ,
+                                      ),
+                                    ],
+                                  ), 
+                                ),
+
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+
+                                StreamBuilder<QuerySnapshot<Object?>>(
+                                  stream: _samsStream,
+                                  builder: (BuildContext context,
+                                    AsyncSnapshot<QuerySnapshot>snapshot) {
+                                      if (snapshot.hasError) {
+                                        return const Text("Lista Vazia");
+                                      }
+                                      if (snapshot.connectionState == ConnectionState.waiting) {
+                                         return const Text("Loading");
+                                      }
+                                      return FadeIn(
+                                        duration: Duration(seconds: 2),
+                                        curve: Curves.easeIn,
+                                        child: Column(
+                                          children: <Widget>[
+
+                                            Text('Veja as principais ofertas',
+                                              textAlign: TextAlign.left,
+                                              style: GoogleFonts.poppins(
+                                                color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.w500
+                                              ) ,
+                                            ),
+                    
+                                            ListView(
+                                              padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),  
+                                              shrinkWrap: true,
+                                              physics: NeverScrollableScrollPhysics(),
+                                              scrollDirection: Axis.vertical,
+                                              children: 
+                                              snapshot.data!.docs.map((DocumentSnapshot document) {
+                                                Map<String, dynamic> data =
+                                                document.data() as Map<String, dynamic>;
+                                                return ListTile(
+                                                  
+                                                  title: Text(data["ofertas"] ?? "",
+                                                    style: GoogleFonts.poppins(
+                                                    color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
+                                                  ) ,
+                                                ),
+                                                subtitle: Text(data["dia"] ?? "",
+                                                  style: GoogleFonts.poppins(
+                                                  color: Colors.black, fontSize: 10.0, fontWeight: FontWeight.bold
+                                                ) ,
+                                                ),
+                                                
+                                                );
+                                              }).toList(),
+                                            ),
+                                          ],
+                                        )
+                                      );
+                                    }
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      );
+                    }, 
                     icon: Icon(FeatherIcons.arrowRight, size: 18, color: Colors.white,),  
                     label: Text( 'Sams Club',
                     textAlign: TextAlign.center,
@@ -406,7 +1109,100 @@ void initState() {
                     children: [
 
                     TextButton.icon(
-                    onPressed: () {}, 
+                    onPressed: () {
+                      showModalBottomSheet(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0),
+                        )),
+                        context: context, 
+                        builder: (context){
+                          return SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+
+                                FadeIn(
+                                  duration: Duration(seconds: 2),
+                                  curve: Curves.easeIn,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(padding: EdgeInsets.fromLTRB(30.0, 15.0, 0.0, 20.0)),
+                                      Text('Panelão Supermercados',
+                                        textAlign: TextAlign.left,
+                                        style: GoogleFonts.poppins(
+                                        color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w500
+                                        ) ,
+                                      ),
+                                    ],
+                                  ), 
+                                ),
+
+                                Divider(color: Colors.transparent,),
+                                Divider(color: Colors.transparent,),
+
+                                StreamBuilder<QuerySnapshot<Object?>>(
+                                  stream: _panelaoStream,
+                                  builder: (BuildContext context,
+                                    AsyncSnapshot<QuerySnapshot>snapshot) {
+                                      if (snapshot.hasError) {
+                                        return const Text("Lista Vazia");
+                                      }
+                                      if (snapshot.connectionState == ConnectionState.waiting) {
+                                         return const Text("Loading");
+                                      }
+                                      return FadeIn(
+                                        duration: Duration(seconds: 2),
+                                        curve: Curves.easeIn,
+                                        child: Column(
+                                          children: <Widget>[
+
+                                            Text('Veja as principais ofertas',
+                                              textAlign: TextAlign.left,
+                                              style: GoogleFonts.poppins(
+                                                color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.w500
+                                              ) ,
+                                            ),
+
+                                          
+                                            ListView(
+                                              padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),  
+                                              shrinkWrap: true,
+                                              physics: NeverScrollableScrollPhysics(),
+                                              scrollDirection: Axis.vertical,
+                                              children: 
+                                              snapshot.data!.docs.map((DocumentSnapshot document) {
+                                                Map<String, dynamic> data =
+                                                document.data() as Map<String, dynamic>;
+                                                return ListTile(
+                                                  
+                                                  title: Text(data["ofertas"] ?? "",
+                                                    style: GoogleFonts.poppins(
+                                                    color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
+                                                  ) ,
+                                                ),
+                                                subtitle: Text(data["dia"] ?? "",
+                                                  style: GoogleFonts.poppins(
+                                                  color: Colors.black, fontSize: 10.0, fontWeight: FontWeight.bold
+                                                ) ,
+                                                ),
+                                                
+                                                );
+                                              }).toList(),
+                                            ),
+                                          ],
+                                        )
+                                      );
+                                    }
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      );
+                    }, 
                     icon: Icon(FeatherIcons.arrowRight, size: 18, color: Colors.white,),  
                     label: Text( 'Panelão',
                     textAlign: TextAlign.center,
@@ -719,9 +1515,6 @@ void initState() {
                                                 ) ,
                                               ),
 
-                                              Divider(color: Colors.transparent,),
-                                              Divider(color: Colors.transparent,),
-                    
                                               ListView(
                                                 padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),  
                                                 shrinkWrap: true,
@@ -737,18 +1530,12 @@ void initState() {
                                                     color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
                                                   ) ,
                                                 ),
-                                                subtitle: Text(data["local"] ?? "",
+                                                subtitle: Text(data["dia"] ?? "",
                                                   style: GoogleFonts.poppins(
                                                   color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.bold
                                                 ) ,
                                                 ),
-                                                trailing: IconButton(onPressed: (){
-                                                  //Share.share(data['texto'], subject: data['local']);
-                                                }, 
-                                                icon: Icon(FeatherIcons.share,
-                                                color: Colors.orangeAccent, size: 18.0,
-                                                )               
-                                                ), 
+                                               
                                                 );
                                                 }).toList(),
                                               ),
@@ -857,9 +1644,7 @@ void initState() {
                                                 ) ,
                                               ),
 
-                                              Divider(color: Colors.transparent,),
-                                              Divider(color: Colors.transparent,),
-                    
+                                              
                                               ListView(
                                                 padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),  
                                                 shrinkWrap: true,
@@ -875,18 +1660,12 @@ void initState() {
                                                     color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
                                                   ) ,
                                                 ),
-                                                subtitle: Text(data["local"] ?? "",
+                                                subtitle: Text(data["dia"] ?? "",
                                                   style: GoogleFonts.poppins(
                                                   color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.bold
                                                 ) ,
                                                 ),
-                                                trailing: IconButton(onPressed: (){
-                                                  //Share.share(data['texto'], subject: data['local']);
-                                                }, 
-                                                icon: Icon(FeatherIcons.share,
-                                                color: Colors.orangeAccent, size: 18.0,
-                                                )               
-                                                ), 
+                                                 
                                                 );
                                                 }).toList(),
                                               ),
@@ -999,9 +1778,6 @@ void initState() {
                                                   color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.w500
                                                 ) ,
                                               ),
-
-                                              Divider(color: Colors.transparent,),
-                                              Divider(color: Colors.transparent,),
                     
                                               ListView(
                                                 padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),  
@@ -1018,18 +1794,12 @@ void initState() {
                                                     color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
                                                   ) ,
                                                 ),
-                                                subtitle: Text(data["local"] ?? "",
+                                                subtitle: Text(data["dia"] ?? "",
                                                   style: GoogleFonts.poppins(
                                                   color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.bold
                                                 ) ,
                                                 ),
-                                                trailing: IconButton(onPressed: (){
-                                                  //Share.share(data['texto'], subject: data['local']);
-                                                }, 
-                                                icon: Icon(FeatherIcons.share,
-                                                color: Colors.orangeAccent, size: 18.0,
-                                                )               
-                                                ), 
+                                                 
                                                 );
                                                 }).toList(),
                                               ),
@@ -1141,9 +1911,6 @@ void initState() {
                                                   color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.w500
                                                 ) ,
                                               ),
-
-                                              Divider(color: Colors.transparent,),
-                                              Divider(color: Colors.transparent,),
                     
                                               ListView(
                                                 padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),  
@@ -1160,18 +1927,12 @@ void initState() {
                                                     color: Colors.orange[700], fontSize: 15.0, fontWeight: FontWeight.w500
                                                   ) ,
                                                 ),
-                                                subtitle: Text(data["local"] ?? "",
+                                                subtitle: Text(data["dia"] ?? "",
                                                   style: GoogleFonts.poppins(
                                                   color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.bold
                                                 ) ,
                                                 ),
-                                                trailing: IconButton(onPressed: (){
-                                                  //Share.share(data['texto'], subject: data['local']);
-                                                }, 
-                                                icon: Icon(FeatherIcons.share,
-                                                color: Colors.orangeAccent, size: 18.0,
-                                                )               
-                                                ), 
+                                                 
                                                 );
                                                 }).toList(),
                                               ),

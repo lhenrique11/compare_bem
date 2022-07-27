@@ -9,6 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'dart:io';
 
 
@@ -67,6 +68,7 @@ void _addItem() {
 
 Widget _addItemButton (BuildContext context){
   return Container(
+    width: 200.0,
     child: FadeIn(
       duration: Duration(seconds: 3),
       curve: Curves.elasticIn,
@@ -76,13 +78,13 @@ Widget _addItemButton (BuildContext context){
           shape: MaterialStateProperty.all(RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(15.0)) ))
         ),
-        icon: FaIcon(FontAwesomeIcons.plus,
-          color: Colors.white, size: 24.0
+        icon: FaIcon(FeatherIcons.plus,
+          color: Colors.white, size: 20.0
         ), 
         label: Text('Novo Item', textAlign: TextAlign.center,
-          style: GoogleFonts.montserrat(
+          style: GoogleFonts.poppins(
             color: Colors.white, 
-            fontSize: 20.0, fontWeight: FontWeight.bold)),
+            fontSize: 15.0, fontWeight: FontWeight.w500)),
         onPressed: (){
           showModalBottomSheet(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
@@ -112,13 +114,17 @@ Widget _addItemButton (BuildContext context){
                             children: <Widget>[
                               Padding(padding: EdgeInsets.all(0.0)),
                               Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.all(Radius.circular(15.0),),
+                                ),
                                 width: 300.0,  
                                 child: TextField(
                                   cursorColor: Colors.black,    
                                   controller: _itemController,
-                                  style: GoogleFonts.montserrat(
+                                  style: GoogleFonts.poppins(
                                     color: Colors.black, 
-                                    fontSize: 25.0, fontWeight: FontWeight.bold),
+                                    fontSize: 15.0, fontWeight: FontWeight.w500),
                                   decoration: InputDecoration(    
                                     enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Colors.transparent) 
@@ -127,9 +133,9 @@ Widget _addItemButton (BuildContext context){
                                     borderSide: BorderSide(color: Colors.black)
                                   ),
                                   labelText: "Novo item da lista",
-                                  labelStyle: GoogleFonts.montserrat(
+                                  labelStyle: GoogleFonts.poppins(
                                     color: Colors.black, 
-                                    fontSize: 25.0, fontWeight: FontWeight.bold)
+                                    fontSize: 15.0, fontWeight: FontWeight.w500)
                                   ),
                                 ), 
                               ),
@@ -144,14 +150,18 @@ Widget _addItemButton (BuildContext context){
                             children: <Widget>[
                               Padding(padding: EdgeInsets.all(0.0)),
                               Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.all(Radius.circular(15.0),),
+                                ),
                                 width: 300.0,  
                                 child: TextField(
                                   keyboardType: TextInputType.number,
                                   cursorColor: Colors.black,    
                                   controller: _precoController,
-                                  style: GoogleFonts.montserrat(
+                                  style: GoogleFonts.poppins(
                                     color: Colors.black, 
-                                    fontSize: 25.0, fontWeight: FontWeight.bold),
+                                    fontSize: 15.0, fontWeight: FontWeight.w500),
                                   decoration: InputDecoration(    
                                     enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Colors.transparent) 
@@ -160,9 +170,9 @@ Widget _addItemButton (BuildContext context){
                                     borderSide: BorderSide(color: Colors.black)
                                   ),
                                   labelText: "Preço do item",
-                                  labelStyle: GoogleFonts.montserrat(
+                                  labelStyle: GoogleFonts.poppins(
                                     color: Colors.black, 
-                                    fontSize: 25.0, fontWeight: FontWeight.bold)
+                                    fontSize: 15.0, fontWeight: FontWeight.w500)
                                   ),
                                 ), 
                               ),
@@ -175,9 +185,9 @@ Widget _addItemButton (BuildContext context){
 
                           TextButton.icon(
                             label: Text('Incluir', textAlign: TextAlign.center,
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.poppins(
                               color: Colors.black, 
-                              fontSize: 20.0, fontWeight: FontWeight.bold)),
+                              fontSize: 20.0, fontWeight: FontWeight.w500)),
                             icon: FaIcon(FontAwesomeIcons.plusCircle,
                             color: Colors.black, size: 20.0
                             ), 
@@ -188,7 +198,7 @@ Widget _addItemButton (BuildContext context){
                             showTopSnackBar(
                               context, 
                               CustomSnackBar.success(message: 'O item está na sua lista de compra!',
-                                textStyle: GoogleFonts.montserrat(color: Colors.white, fontSize: 12.0,
+                                textStyle: GoogleFonts.poppins(color: Colors.white, fontSize: 12.0,
                                 fontWeight: FontWeight.normal),
                               ),
                               displayDuration: Duration(seconds: 2),          
@@ -196,31 +206,10 @@ Widget _addItemButton (BuildContext context){
                           } 
                         ),
 
-                        Divider(color: Colors.transparent),
-                        Divider(color: Colors.transparent),
-
-                        FadeIn(
-                          duration: Duration(seconds: 1),
-                          curve: Curves.easeIn,
-                          child: Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                          Image.asset('images/addcompras.png',),
-                          Text('Adicione um item na sua lista de compra',
-                            textAlign: TextAlign.left,
-                            style: GoogleFonts.montserrat(
-                            color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.bold
-                          ) ,
-                          ),
-                        ]
-                        ) 
-                        ),
-                      ),
-
-                        Divider(color: Colors.transparent),
-                        Divider(color: Colors.transparent),
+                        Container(
+                          width: 300.0,
+                          height: 300.0,
+                        )
 
                       ],
                     ), 
@@ -249,12 +238,12 @@ Widget listaItem(context, index){
   child: ListTile(
     tileColor: Colors.white,
     title: Text("${_itemList [index]["itemtitle"]}",
-    style: GoogleFonts.montserrat(
-      color: Colors.orange[700], fontSize: 24.0, fontWeight: FontWeight.bold),
+    style: GoogleFonts.poppins(
+      color: Colors.orange[700], fontSize: 18.0, fontWeight: FontWeight.w500),
     ),
     subtitle: Text(" R\$ ${_itemList [index]["itempreco"]}",
-    style: GoogleFonts.montserrat(
-      color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.bold),
+    style: GoogleFonts.poppins(
+      color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.w500),
     ), 
     trailing: IconButton(
       onPressed: (){
@@ -272,7 +261,7 @@ Widget listaItem(context, index){
           showTopSnackBar(
           context, 
           CustomSnackBar.success(message: 'Item comprado!',
-          textStyle: GoogleFonts.montserrat(color: Colors.white, fontSize: 17.0,
+          textStyle: GoogleFonts.poppins(color: Colors.white, fontSize: 17.0,
           fontWeight: FontWeight.normal),
           ),
           onTap: (){
@@ -286,7 +275,7 @@ Widget listaItem(context, index){
           ); 
 
       },
-      icon: FaIcon(FontAwesomeIcons.solidCheckCircle,
+      icon: FaIcon(FeatherIcons.checkCircle,
       color: Colors.green, size: 24.0,
       ),
     ), 
@@ -307,7 +296,7 @@ Widget listaItem(context, index){
           showTopSnackBar(
           context, 
           CustomSnackBar.error(message: 'Item excluido!',
-          textStyle: GoogleFonts.montserrat(color: Colors.white, fontSize: 17.0,
+          textStyle: GoogleFonts.poppins(color: Colors.white, fontSize: 17.0,
           fontWeight: FontWeight.normal),
           ),
           onTap: (){
@@ -321,7 +310,7 @@ Widget listaItem(context, index){
           ); 
 
       },
-      icon: FaIcon(FontAwesomeIcons.trash,
+      icon: FaIcon(FeatherIcons.trash,
       color: Colors.red, size: 24.0,
       ),
     ), 
@@ -346,6 +335,7 @@ Widget listaItem(context, index){
             Divider(color: Colors.transparent,),
             Divider(color: Colors.transparent,),
             Divider(color: Colors.transparent,),
+            Divider(color: Colors.transparent,),
 
             FadeIn(
             duration: Duration(seconds: 2),
@@ -354,21 +344,53 @@ Widget listaItem(context, index){
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(padding: EdgeInsets.fromLTRB(20.0, 15.0, 0.0, 20.0)),
-                  Text('Faça sua \nlista de \ncompras',
+                  Text('Sua lista de compras',
                     textAlign: TextAlign.left,
-                    style: GoogleFonts.montserrat(
-                      color: Colors.black, fontSize: 24.0, fontWeight: FontWeight.bold
+                    style: GoogleFonts.poppins(
+                      color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.w500
                     ) ,
                   ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(55.0, 5.0, 0.0, 0.0),
-                    child: _addItemButton(context) 
-                  ),
+                  
               ],
             ), 
           ),
 
+         Divider(color: Colors.transparent),
           Divider(color: Colors.transparent),
+          
+
+          FadeIn(
+            duration: Duration(seconds: 2),
+            curve: Curves.easeIn,
+            child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                child: _addItemButton(context) 
+              ),
+            ],
+          ),
+          ),
+          
+
+          Divider(color: Colors.transparent),
+          Divider(color: Colors.transparent),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(padding: EdgeInsets.fromLTRB(20.0, 15.0, 0.0, 20.0)),
+              Text('Minhas compras',
+                textAlign: TextAlign.left,
+                style: GoogleFonts.poppins(
+                  color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w500
+                ) ,
+              ),    
+            ],
+          ), 
+
           Divider(color: Colors.transparent),
           
           _itemList.isEmpty == true ?
@@ -380,11 +402,11 @@ Widget listaItem(context, index){
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset('images/listacompras.png',),
-                Text('Crie sua lista de compras aqui!',
+                Image.asset("images/listacompras.png"),
+                Text('Sua lista de compras está vazia!',
                     textAlign: TextAlign.left,
-                    style: GoogleFonts.montserrat(
-                      color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.bold
+                    style: GoogleFonts.poppins(
+                      color: Colors.grey, fontSize: 12.0, fontWeight: FontWeight.bold
                     ) ,
                 ),
 

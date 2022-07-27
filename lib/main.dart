@@ -87,7 +87,7 @@ class _MainPageState extends State<MainPage> {
       body: screens[_currentIndex],
       extendBody: true,
       bottomNavigationBar: DotNavigationBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.orange[700],
         itemPadding: EdgeInsets.symmetric(horizontal: 18, vertical: 16),
         unselectedItemColor: Colors.orange[300],
         duration: Duration(milliseconds: 500),
@@ -98,24 +98,24 @@ class _MainPageState extends State<MainPage> {
         items: [
            DotNavigationBarItem(
               icon: FaIcon(FeatherIcons.home),
-              selectedColor: Colors.orange[700],
+              selectedColor: Colors.white,
             ),
 
             
             DotNavigationBarItem(
               icon: FaIcon(FeatherIcons.shoppingCart),
-              selectedColor: Colors.orange[700],
+              selectedColor: Colors.white,
             ),
 
             
             DotNavigationBarItem(
               icon: FaIcon(FeatherIcons.list),
-              selectedColor: Colors.orange[700],
+              selectedColor: Colors.white,
             ),
 
             DotNavigationBarItem(
               icon: FaIcon(FeatherIcons.bell),
-              selectedColor: Colors.orange[700],
+              selectedColor: Colors.white,
             ),
         ]
       )

@@ -55,11 +55,11 @@ void initState() {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Padding(padding: EdgeInsets.fromLTRB(20.0, 15.0, 0.0, 20.0)),
-                  Text('Compre no\nseu supermercado\nfavorito',
+                Padding(padding: EdgeInsets.fromLTRB(20.0, 60.0, 0.0, 20.0)),
+                  Text('Compre online \nno site do supermercado',
                     textAlign: TextAlign.left,
-                    style: GoogleFonts.montserrat(
-                      color: Colors.black, fontSize: 24.0, fontWeight: FontWeight.bold
+                    style: GoogleFonts.poppins(
+                      color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.w500
                     ) ,
                   ),
               ],
@@ -67,30 +67,6 @@ void initState() {
           ),
 
           Divider(color: Colors.transparent,),
-          Divider(color: Colors.transparent,),
-
-          FadeIn(
-            duration: Duration(seconds: 1),
-            curve: Curves.easeIn,
-            child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset('images/sitecompras.png',),
-                Text('Faça suas compras \ndiretamente no site do seu \nsupermercado preferido',
-                    textAlign: TextAlign.left,
-                    style: GoogleFonts.montserrat(
-                      color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.bold
-                    ) ,
-                ),
-
-              ]
-            ) 
-          ),
-          ),
-          
-
           Divider(color: Colors.transparent,),
 
           Column(
@@ -140,92 +116,80 @@ void initState() {
 Widget _compreonlineList1 = Container(
     margin: EdgeInsets.symmetric(vertical: 10.0),
     decoration: BoxDecoration(
-      color: Colors.orange[700],
+      color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(40.0),),
         boxShadow: [
           BoxShadow(
           color: Colors.grey.shade200,
-          spreadRadius: 2,
-          blurRadius: 8,
+          spreadRadius: 1,
+          blurRadius: 1,
           offset: Offset(0,0))]),
-    height: 250.0,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
+    height: 700.0,
+      child: GridView(
+        scrollDirection: Axis.vertical,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 8,
+          mainAxisSpacing: 8,
+        ),  
         children: [
 
           FadeIn(
           duration: Duration(seconds: 2),
           curve: Curves.easeIn,
-          child: Container(
-            margin: EdgeInsets.fromLTRB(15.0, 10.0, 5.0, 10.0),
-            decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(40.0),),
-            ),
-            width: 200.0,
-            child: Column(
+          child:  Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset('images/compras-1.png', width: 120.0, height: 120.0,),
-
+                 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:[
-                      TextButton.icon(
-                      onPressed: () => launchUrlString('https://www.confianca.com.br/'),
-                      icon: FaIcon(FontAwesomeIcons.arrowCircleRight, color: Colors.orange[700]), 
-                      label: Text('Acesse o site',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(
-                          color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold
+                      Container(
+                        width: 120.0,
+                        height: 120.0,
+                        child: IconButton(
+                          onPressed: () => launchUrlString('https://www.confianca.com.br/'),
+                          icon: Image.asset('images/compras-1.png', width:120.0, height:120.0),   
                         ) ,
-                      ),  
                       )
+                      
                     ]
                   )
                   
                 ],
               ),
-            )
+            
           ),
 
          
           FadeIn(
           duration: Duration(seconds: 2),
           curve: Curves.easeIn,
-          child:  Container(
-            margin: EdgeInsets.fromLTRB(15.0, 10.0, 5.0, 10.0),
-            decoration: BoxDecoration(
+          child: Container(
             color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(40.0),),
-            ),
-            width: 200.0,
-            child: Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset('images/compras-2.png', width: 120.0, height: 120.0,),
+            
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:[
-                      TextButton.icon(
-                      onPressed: () => launchUrlString('https://www.tauste.com.br/'),
-                      icon: FaIcon(FontAwesomeIcons.arrowCircleRight, color: Colors.orange[700]), 
-                      label: Text('Acesse o site',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(
-                          color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold
-                        ) ,
-                      ),  
+                      Container(
+                        width: 120.0,
+                        height:120.0,
+                        child:IconButton(
+                        onPressed: () => launchUrlString('https://www.tauste.com.br/'),
+                        icon: Image.asset('images/compras-2.png', width: 120.0, height: 120.0,),   
+                       )
                       )
+                      
                     ]
                   )
                 ],
               ),
-            )
-          ), 
+            ) 
           ),
 
          
@@ -238,26 +202,25 @@ Widget _compreonlineList1 = Container(
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(40.0),),
             ),
-            width: 200.0,
+            width: 300.0,
             child: Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset('images/compras-3.png', width: 120.0, height: 120.0,),
+                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:[
-                      TextButton.icon(
-                      onPressed: () => launchUrlString('https://www.paodeacucar.com/'),
-                      icon: FaIcon(FontAwesomeIcons.arrowCircleRight, color: Colors.orange[700]), 
-                      label: Text('Acesse o site',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(
-                          color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold
-                        ) ,
-                      ),  
+                      Container(
+                        width: 120.0,
+                        height: 120.0,
+                        child: IconButton(
+                          onPressed: () => launchUrlString('https://www.paodeacucar.com/'),
+                          icon: Image.asset('images/compras-3.png', width: 120.0, height: 120.0,),   
+                        ),
                       )
+                      
                     ]
                   )
                 ],
@@ -276,26 +239,25 @@ Widget _compreonlineList1 = Container(
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(40.0),),
             ),
-            width: 200.0,
+            width: 300.0,
             child: Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset('images/compras-5.png', width: 120.0, height: 120.0,),
+                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:[
-                      TextButton.icon(
-                      onPressed: () => launchUrlString('https://www.spanionline.com.br/'),
-                      icon: FaIcon(FontAwesomeIcons.arrowCircleRight, color: Colors.orange[700]), 
-                      label: Text('Acesse o site',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(
-                          color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold
-                        ) ,
-                      ),  
+                      Container(
+                        width: 120.0,
+                        height: 120.0,
+                        child: IconButton(
+                          onPressed: () => launchUrlString('https://www.spanionline.com.br/'),
+                          icon: Image.asset('images/compras-5.png', width: 120.0, height: 120.0,),  
+                        )
                       )
+                      
                     ]
                   )
                 ],
@@ -314,26 +276,26 @@ Widget _compreonlineList1 = Container(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(40.0),),
             ),
-            width: 200.0,
+            width: 300.0,
             child: Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset('images/compras-7.png', width: 120.0, height: 120.0,),
+                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:[
-                      TextButton.icon(
-                      onPressed: () => launchUrlString('https://www.samsclub.com.br/'),
-                      icon: FaIcon(FontAwesomeIcons.arrowCircleRight, color: Colors.orange[700]), 
-                      label: Text('Acesse o site',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(
-                          color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold
+
+                      Container(
+                        width:120.0,
+                        height:120.0,
+                        child: IconButton(
+                          onPressed: () => launchUrlString('https://www.samsclub.com.br/'),
+                          icon: Image.asset('images/compras-7.png', width: 120.0, height: 120.0,),   
                         ) ,
-                      ),  
                       )
+                      
                     ]
                   )
                 ],
@@ -352,26 +314,26 @@ Widget _compreonlineList1 = Container(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(40.0),),
             ),
-            width: 200.0,
+            width: 300.0,
             child: Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset('images/compras-8.png', width: 120.0, height: 120.0,),
+                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:[
-                      TextButton.icon(
-                      onPressed: () => launchUrlString('https://www.tendaatacado.com.br/'),
-                      icon: FaIcon(FontAwesomeIcons.arrowCircleRight, color: Colors.orange[700]), 
-                      label: Text('Acesse o site',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(
-                          color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold
+
+                      Container(
+                        width: 120.0,
+                        height: 120.0,
+                        child: IconButton(
+                          onPressed: () => launchUrlString('https://www.tendaatacado.com.br/'),
+                          icon: Image.asset('images/compras-8.png', width: 120.0, height: 120.0,),   
                         ) ,
-                      ),  
                       )
+                      
                     ]
                   )
                 ],
@@ -389,26 +351,26 @@ Widget _compreonlineList1 = Container(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(40.0),),
             ),
-            width: 200.0,
+            width: 300.0,
             child: Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset('images/compras-10.png', width: 120.0, height: 120.0,),
+                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:[
-                      TextButton.icon(
-                      onPressed: () => launchUrlString('https://www.atacadao.com.br/'),
-                      icon: FaIcon(FontAwesomeIcons.arrowCircleRight, color: Colors.orange[700]), 
-                      label: Text('Acesse o site',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(
-                          color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold
+
+                      Container(
+                        width: 120.0,
+                        height: 120.0,
+                        child: IconButton(
+                          onPressed: () => launchUrlString('https://www.atacadao.com.br/'),
+                          icon: Image.asset('images/compras-10.png', width: 120.0, height: 120.0,),  
                         ) ,
-                      ),  
                       )
+                      
                     ]
                   )
                 ],
@@ -426,26 +388,24 @@ Widget _compreonlineList1 = Container(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(40.0),),
             ),
-            width: 200.0,
+            width: 300.0,
             child: Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset('images/compras-11.png', width: 120.0, height: 120.0,),
+                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:[
-                      TextButton.icon(
-                      onPressed: () => launchUrlString('https://www.barracaosm.com.br/'),
-                      icon: FaIcon(FontAwesomeIcons.arrowCircleRight, color: Colors.orange[700]), 
-                      label: Text('Acesse o site',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(
-                          color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold
-                        ) ,
-                      ),  
-                      )
+                      Container(
+                        width: 120.0,
+                        height: 120.0,
+                        child: IconButton(
+                          onPressed: () => launchUrlString('https://www.barracaosm.com.br/'),
+                          icon: Image.asset('images/compras-11.png', width: 120.0, height: 120.0,),  
+                        ),
+                      )            
                     ]
                   )
                 ],
