@@ -1,16 +1,19 @@
-# comparebem
+# Compare Bem 
 
-Compare os preços nos diversos supermercados
+Veja as ofertas e compre nos sites dos supermercados da sua cidade
 
-## Getting Started
+Chega de vários folhetos! Veja as principais ofertas dos principais supermercados na palma da sua mão! Além disso, veja comparações de ofertas, ofertas de atacado e o alerta de ofertas, que traz as principais ofertas do dia pra você!
 
-This project is a starting point for a Flutter application.
+E ainda você pode acessar os sites de vários supermercados, diretamente na categoria que você escolher!
 
-A few resources to get you started if this is your first Flutter project:
+## Tecnologias Usadas
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Para este projeto foram usadas as seguintes tecnologias:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Dart
+- SQFlite
+- Firebase
+
+## Google Play
+
+O aplicativo atualmente não está disponível na Play Store
